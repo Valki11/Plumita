@@ -1,6 +1,6 @@
 # Roadmap
 
-Fecha límite: app funcionando en Docker Compose el **31 de octubre de 2026**. Sin VPS ni dominio, así que "desplegada" significa el stack corriendo en localhost y accesible desde el celular de Linda por la red local. Cada fase termina con criterios de salida comprobables, y no se pasa a la siguiente sin cumplirlos.
+Fecha límite: app funcionando en Docker Compose el **31 de octubre de 2026**. Sin VPS ni dominio, "desplegada" significa el stack corriendo en Docker Compose en localhost, accesible desde el celular de Linda por la red local.
 
 ```mermaid
 gantt
@@ -8,100 +8,86 @@ gantt
     dateFormat YYYY-MM-DD
     axisFormat %d/%m
     section Diseño
-    F0 Análisis y arquitectura :done, f0, 2026-10-06, 4d
+    F0 Análisis y arquitectura :done, f0, 2026-10-06, 3d
     section Desarrollo
-    F1 Fundación            :f1, 2026-10-10, 3d
-    F2 Cuenta               :f2, 2026-10-13, 2d
-    F3 Aves                 :f3, 2026-10-15, 3d
-    F4 Alimentación         :f4, 2026-10-18, 3d
-    F5 Inventario           :f5, 2026-10-21, 3d
-    F6 Inicio y Telegram    :f6, 2026-10-24, 3d
+    Sprint de avance (F1 a F5 y datos demo) :active, sp, 2026-10-08, 3d
+    F6 Telegram y recordatorios :f6, 2026-10-11, 4d
+    Seguridad, CI, E2E y backup :seg, 2026-10-15, 6d
+    Pulido y ajustes :pul, 2026-10-21, 5d
     section Cierre
     F7 Pruebas con usuaria  :f7, 2026-10-27, 3d
     F8 Cierre               :f8, 2026-10-30, 2d
 ```
 
-## F0: Análisis y arquitectura (6–9 oct)
+## F0: Análisis y arquitectura (6 a 9 oct) — hecha
 
-Documentos de esta carpeta, DAD v1.2 (diff) y aprobación. **Salida:** aprobación para empezar F1.
+Documentos de esta carpeta y DAD v1.2.
 
-## F1: Fundación (10–12 oct)
+## Sprint de avance (8 al 10 oct)
 
-- Proyecto Next.js con TypeScript estricto, ESLint, Vitest y estructura de carpetas.
-- Prisma: esquema completo, migración inicial y seed de `tipo_ave` y `tabla_alimenticia`.
-- `docker-compose.yml`, `Dockerfile`, entrypoint y healthcheck `/api/health`. Todo en localhost, sin TLS.
-- `env.ts` con zod, `.env.example` completo y `lib/tiempo.ts`.
-- Organic importado, fuentes con `next/font`, layout base y los componentes `ui/` mínimos con los ajustes AA (análisis R-5).
-- CI: lint, typecheck, tests y build.
-- Scripts `backup.sh` y `restore-test.sh`, con una restauración ejecutada.
-- `operacion.md` verificado: abrir la app desde el celular por la IP de la LAN.
+Entrega del 10/10: avance mostrado en localhost con la vista de celular del inspector del navegador. No hay VPS, ni usuaria final probando, ni Telegram en la demostración.
 
-**Salida:** `docker compose up` deja la app sirviendo una página y la BD migrada y sembrada. CI en verde. Restauración probada. El celular abre la página.
+Orden y slices, con commits pequeños:
 
-## F2: Cuenta (13–14 oct)
+1. **Fundación.** Next.js, Prisma, Docker Compose (`app` y `db`), migraciones, seed de `tipo_ave` y `tabla_alimenticia`, tokens de Organic, fuentes con `next/font` y layout mobile-first con la navegación inferior. Sin CI.
+2. **Cuenta.** Registro, login, cerrar sesión, cookie firmada, argon2, zod y `REGISTRO_ABIERTO`. Ajustes con celular, contraseña, gestión de horarios (máximo 3, constante) y tabla de referencia con 6 valores.
+3. **Mis aves.** 4 banners, ingresar, editar, inactivar y reactivar, con edad y etapa calculadas al vuelo en semanas.
+4. **Alimentar.** Cantidad por toma, etiqueta de horario, registro con cantidad editable e historial. Sin horarios activos se pide configurar uno.
+5. **Inventario.** Compras, historial, inventario (nunca negativo en pantalla) y proyección a 15 días con margen. Casos borde del DAD 3.5.3.
+6. **Inicio.** Aves activas, inventario, días que alcanza, próxima alimentación y tarjeta en estilo de alerta con 3 días o menos.
+7. **Datos de demostración.** `npm run seed:demo`: usuaria de prueba, unas 15 aves mezcladas (con pollitos), 3 horarios, 2 compras y varias alimentaciones.
 
-- RF-01, 02, 03, 18, 19 y RNF-13.
-- Registro con `REGISTRO_ABIERTO`, login con argon2, cookie firmada, rate limiting, `middleware.ts` y `requerirUsuario()`.
-- Ajustes: celular, contraseña y cerrar sesión.
-- Script `restablecer-contrasena.ts`.
-- Pantallas Login, Registro y Ajustes (parte de cuenta).
+Las pruebas unitarias del cálculo (edad, etapa, cantidad por toma, inventario y proyección) no se recortan. Si algo no cabe, se recorta desde el final de la lista.
 
-**Salida:** CP-01, 02, 03, 13, 22 (rate limit) y 23 (registro cerrado) pasan. Tests de integración del rate limit y del hash.
+**Fuera del sprint** (pasa a las fases siguientes): Telegram, CI, rate limiting, E2E y backup.
 
-## F3: Aves (15–17 oct)
+**Salida:** `docker compose up` deja la app funcionando con datos de demostración, y las pruebas del cálculo en verde.
 
-- `dominio/edad.ts` con tests de límites.
-- RF-04, 05, 06 (con reactivar): diálogo de ave, grupos de Mis aves (4 banners), edad en semanas.
-- Ajustes: gestión de horarios (RF-07), con máximo 3, hora única y estados vacío y máximo.
+## F6: Telegram y recordatorios (11 al 14 oct)
 
-**Salida:** CP-04, 05, 06, 07, 16 y 19 pasan. Los grupos cuadran con la etapa calculada.
+- Cliente de Telegram, `LongPollingTelegram` y vinculación (RF-17) con su sección en Ajustes.
+- Planificador, ventana de 10 minutos, omisión de 60 minutos, reintentos y `notificacion_enviada` (RF-15).
+- Alerta de inventario bajo (RF-16).
+- RF-20 (desvincular) solo se documenta, no se construye.
 
-## F4: Alimentación (18–20 oct)
+**Salida:** CP-12, 14, 15, 18, 20 y 21 pasan con el bot real. Reiniciar la app dentro de la ventana no duplica el aviso.
 
-- `dominio/alimento.ts` y `horarioParaMostrar`.
-- RF-08, 09, 10: pantalla Alimentar con cantidad, etiqueta de horario, confirmación editable e historial.
-- Estado "sin horarios" con enlace a Ajustes.
+## Seguridad, CI, E2E y backup (15 al 20 oct)
 
-**Salida:** CP-08, 09 y 17 pasan. El cálculo coincide con la hoja de verificación del checklist (ejemplo de 15 aves).
+- Rate limiting del login con `intento_login` (RNF-12, CP-22).
+- CI en GitHub Actions: lint, typecheck, tests y build.
+- Pruebas de integración contra PostgreSQL (acciones, rate limit, planificador).
+- E2E mínimo del flujo principal: login, ingresar ave, registrar alimentación y registrar compra.
+- `backup.sh` y `restore-test.sh`, con una restauración ejecutada (RNF-14).
+- Revisión de accesibilidad y del checklist de calidad hasta ese punto.
 
-## F5: Inventario y proyección (21–23 oct)
+**Salida:** CI en verde, restauración probada y CP-22 y CP-23 pasando.
 
-- `dominio/inventario.ts` y `proyeccion15`.
-- RF-11, 12, 13, 14: pantalla Inventario, diálogo de compra, historial, proyección con margen y costo.
-- Casos límite: sin compras, sin aves, inventario negativo.
+## Pulido y ajustes (21 al 26 oct)
 
-**Salida:** CP-10 y CP-11 pasan, con tests de la fórmula incluidos los casos límite.
+- Estados vacíos, mensajes de error, revisión en el celular real por la IP de la red local.
+- Ajustes derivados de la demostración del 10/10.
+- Medición de carga (RNF-02).
 
-## F6: Inicio y Telegram (24–26 oct)
+## F7: Pruebas con usuaria (27 al 29 oct)
 
-- Pantalla Inicio con sus estados.
-- Cliente de Telegram, `LongPollingTelegram`, vinculación (RF-17, CP-14) y pantalla de vinculación en Ajustes.
-- Planificador, recordatorios con ventana, omisión y reintentos (RF-15, CP-15 y CP-18).
-- Alerta de inventario bajo (RF-16, CP-12 y CP-20).
-- RF-20 (desvincular) solo si sobra tiempo.
-
-**Salida:** CP-12, 14, 15, 18, 20 y 21 pasan con el bot real. Prueba de reinicio: reiniciar la app dentro de la ventana no duplica el aviso.
-
-## F7: Pruebas con usuaria (27–29 oct)
-
-- Ejecutar los casos de prueba CP-01 a CP-23 del DAD y registrar resultados.
-- Sesión con Linda en su celular, por la LAN y con el bot vinculado: tareas guiadas sin ayuda.
+- Ejecutar los casos CP-01 a CP-23 y registrar los resultados.
+- Sesión con Linda en su celular, por la red local y con el bot vinculado, con tareas guiadas.
 - Confirmar los valores de pato de la tabla alimenticia.
-- Medición de carga (RNF-02) y revisión de accesibilidad.
 - Lista de observaciones priorizada.
 
-**Salida:** informe de pruebas y lista de observaciones. Sin errores bloqueantes abiertos.
+**Salida:** informe de pruebas y observaciones. Sin errores bloqueantes abiertos.
 
-## F8: Cierre (30–31 oct)
+## F8: Cierre (30 y 31 oct)
 
 - Corregir las observaciones priorizadas.
 - Cerrar el registro (`REGISTRO_ABIERTO=false`) tras crear la cuenta de Linda.
-- Ejecutar de nuevo `restore-test.sh` con datos reales y programar el backup diario.
+- Repetir `restore-test.sh` con datos reales y programar el backup diario.
 - Recorrer el [checklist de calidad](checklist-calidad.md) completo.
-- Etiquetar `v1.0.0`, y actualizar README y DAD v1.2 (versión final).
+- Etiquetar `v1.0.0` y actualizar el README.
 
-**Salida:** app corriendo con `restart: unless-stopped`, backup programado y checklist al 100 %. Linda con cuenta y Telegram vinculado.
+**Salida:** app corriendo con `restart: unless-stopped`, backup programado y checklist al 100 %.
 
-## Colchón y recortes
+## Recortes
 
-No hay días libres. Si una fase se retrasa, se recorta en este orden: RF-20, pulido visual, tests de integración no críticos. Nunca se recortan F7, el backup ni la restauración probada.
+Si algo se retrasa, se recorta en este orden: pulido visual, E2E, pruebas de integración no críticas. Nunca se recortan las pruebas del cálculo, F7, el backup ni la restauración probada.
