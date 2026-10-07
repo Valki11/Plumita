@@ -81,14 +81,15 @@ Este documento describe el contexto general de la solución, los requisitos que 
 
 Se detalla a continuación:
 
-1. La usuaria ingresa a la aplicación desde la aplicación de su celular.
+1. La usuaria ingresa a la aplicación desde el navegador de su celular.
 2. Registra o consulta las aves que tiene activas, agrupadas por tipo (gallina, gallo, pato) y por etapa (pollito o adulto).
-3. El sistema calcula automáticamente, todos los días, la  edad actual de cada ave a partir de la fecha aproximada en que ingresó a la granja.
-4. Cuando llega la hora de alimentar, el sistema le muestra la cantidad recomendada, calculada según el tipo, la etapa y la cantidad de aves que tiene.
-5. La usuaria registra que ya alimentó a las aves, y ese registro queda guardado como parte del historial.
-6. Cada vez que compra alimento, lo registra con la cantidad en libras y el precio pagado, y el sistema actualiza el inventario disponible.
-7. Con base en el consumo, el sistema le proyecta cuánto alimento va a necesitar y cuánto le va a costar en un periodo de tiempo definido.
-8. Si el alimento está por agotarse, el sistema le envía una notificación por Telegram al número de celular que registró.
+3. El sistema calcula la edad actual de cada ave en semanas, a partir de la fecha aproximada en que ingresó a la granja y la edad que se estimó en ese momento.
+4. La usuaria define a qué horas del día alimenta a sus aves. A cada una de esas horas, el sistema le manda un recordatorio por Telegram con la cantidad que le toca dar.
+5. Cuando abre la pantalla de alimentar, el sistema le muestra la cantidad recomendada, calculada según el tipo, la etapa y la cantidad de aves que tiene.
+6. La usuaria registra que ya alimentó a las aves, y ese registro queda guardado como parte del historial.
+7. Cada vez que compra alimento, lo registra con la cantidad en libras y el precio pagado, y el sistema actualiza el inventario disponible.
+8. Con base en el consumo, el sistema le proyecta cuánto alimento va a necesitar y cuánto le va a costar en los próximos 15 días.
+9. Si el alimento está por agotarse, el sistema le envía una alerta por Telegram.
 
 ### 2.3. Alcance
 
@@ -116,56 +117,49 @@ Así como se definió qué sí cubre el sistema, también es importante dejar cl
 
 ## 2.5 Cronograma de actividades
 
-El desarrollo de StockPredict se organiza siguiendo las etapas propias del ciclo de vida del software: análisis, diseño, desarrollo, pruebas e implementación. La fecha límite para tener la aplicación implementada y funcionando es el **31 de octubre**.
+El desarrollo de Plumita sigue las etapas del ciclo de vida del software: análisis, diseño, desarrollo, pruebas e implementación. La fecha límite para tener la aplicación implementada y funcionando es el 31 de octubre.
+
 
 ### Tabla de actividades
 
 | Etapa | Actividad | Fecha inicio | Fecha fin |
 |---|---|---|---|
 | Análisis | Definición de requisitos funcionales y no funcionales | 24/08 | 30/08 |
-| Análisis | Definición de la fórmula de predicción (PTS) | 24/08 | 30/08 |
-| Diseño | Diseño de base de datos y diagrama entidad-relación | 31/08 | 06/09 |
-| Diseño | Diseño de mockups y wireframes de las pantallas | 31/08 | 06/09 |
-| Desarrollo | Configuración del proyecto (backend, frontend, base de datos) | 07/09 | 13/09 |
-| Desarrollo | Módulo de autenticación (registro, login, recuperar contraseña) | 14/09 | 20/09 |
-| Desarrollo | Módulo de categorías y productos (CRUD) | 21/09 | 27/09 |
-| Desarrollo | Módulo de ventas e inventario (compras y ajuste de stock) | 28/09 | 04/10 |
-| Desarrollo | Módulo de predicción de stock (fórmula PTS) | 05/10 | 11/10 |
-| Desarrollo | Dashboard y ajustes visuales generales | 12/10 | 18/10 |
-| Pruebas | Pruebas unitarias y casos de prueba (QA) | 19/10 | 25/10 |
-| Pruebas | Pruebas con la usuaria final | 26/10 | 28/10 |
-| Implementación | Corrección de observaciones y despliegue final | 29/10 | 31/10 |
+| Diseño | Diseño de base de datos, diagrama entidad-relación y mockups | 31/08 | 06/09 |
+| Análisis | Ajustes al DAD, tabla alimenticia y arquitectura técnica | 08/10 | 09/10 |
+| Desarrollo | Configuración del proyecto, base de datos y primer despliegue | 10/10 | 12/10 |
+| Desarrollo | Módulo de cuenta (registro, login, configuración) | 13/10 | 14/10 |
+| Desarrollo | Módulo de aves (ingresar, editar, inactivar, edad y etapa) | 15/10 | 17/10 |
+| Desarrollo | Módulo de alimentación (cálculo, registro e historial) | 18/10 | 20/10 |
+| Desarrollo | Módulo de inventario y proyección a 15 días | 21/10 | 23/10 |
+| Desarrollo | Pantalla de inicio y notificaciones por Telegram | 24/10 | 26/10 |
+| Pruebas | Casos de prueba y pruebas con la usuaria real | 27/10 | 29/10 |
+| Implementación | Corrección de observaciones y despliegue final | 30/10 | 31/10 |
+
 
 ### Diagrama de Gantt
 
 ```mermaid
 gantt
-    title Cronograma StockPredict
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d/%m
-
-    section Análisis
-    Definición de requisitos           :a1, 2026-08-24, 2026-08-30
-    Definición fórmula PTS             :a2, 2026-08-24, 2026-08-30
-
-    section Diseño
-    Diseño de base de datos            :d1, 2026-08-31, 2026-09-06
-    Mockups y wireframes               :d2, 2026-08-31, 2026-09-06
-
+    title Cronograma de actividades - Plumita
+    dateFormat DD-MM-YYYY
+    axisFormat %d/%m
+    section Analisis
+    Requisitos                 :24-08-2026, 7d
+    Ajustes DAD y arquitectura :08-10-2026, 2d
+    section Diseno
+    Base de datos y mockups    :31-08-2026, 7d
     section Desarrollo
-    Configuración del proyecto         :dev1, 2026-09-07, 2026-09-13
-    Módulo de autenticación            :dev2, 2026-09-14, 2026-09-20
-    Módulo categorías y productos      :dev3, 2026-09-21, 2026-09-27
-    Módulo ventas e inventario         :dev4, 2026-09-28, 2026-10-04
-    Módulo de predicción (PTS)         :dev5, 2026-10-05, 2026-10-11
-    Dashboard y ajustes finales        :dev6, 2026-10-12, 2026-10-18
-
+    Configuracion y despliegue :10-10-2026, 3d
+    Modulo de cuenta           :13-10-2026, 2d
+    Modulo de aves             :15-10-2026, 3d
+    Modulo de alimentacion     :18-10-2026, 3d
+    Inventario y proyeccion    :21-10-2026, 3d
+    Inicio y Telegram          :24-10-2026, 3d
     section Pruebas
-    Pruebas unitarias y QA             :t1, 2026-10-19, 2026-10-25
-    Pruebas con usuaria final          :t2, 2026-10-26, 2026-10-28
-
-    section Implementación
-    Corrección y despliegue final      :i1, 2026-10-29, 2026-10-31
+    Pruebas con usuaria        :27-10-2026, 3d
+    section Implementacion
+    Correcciones y entrega     :30-10-2026, 2d
 ```
 
 
@@ -184,16 +178,17 @@ El sistema debe permitir que la usuaria inicie sesión con su usuario y contrase
 Desde la pantalla de configuración, la usuaria debe poder editar su número de celular y su contraseña.
 
 **RF-04. Ingresar ave**
-El sistema debe permitir registrar una nueva ave, seleccionando el tipo (gallina, gallo o pato), ingresando una fecha aproximada de ingreso a la granja, la edad estimada que tenía en ese momento y una breve descripción.
+El sistema debe permitir registrar una nueva ave, seleccionando el tipo (gallina, gallo o pato), la fecha aproximada de ingreso a la granja, la edad estimada en semanas que tenía en ese momento y una breve descripción.
 
 **RF-05. Editar ave**
-El sistema debe permitir editar la fecha de ingreso, la edad estimada y la descripción de un ave ya registrada, en caso de que se haya ingresado un dato incorrecto.
+El sistema debe permitir editar la fecha de ingreso, la edad estimada en semanas y la descripción de un ave ya registrada.
 
 **RF-06. Inactivar ave**
 El sistema debe permitir inactivar un ave en vez de eliminarla, para conservar su historial de alimentación.
 
-**RF-07. Configurar veces de alimentación al día**
-El sistema debe permitir ingresar y editar cuántas veces al día se le da de comer a las aves.
+**RF-07. Configurar horarios de alimentación**
+El sistema debe permitir que la usuaria defina a qué horas del día alimenta a sus aves (por ejemplo 7:00 a. m. y 4:00 p. m.). La cantidad de horarios activos es la cantidad de veces al día que se alimenta.
+
 
 **RF-08. Calcular cantidad de alimento**
 El sistema debe calcular automáticamente cuánto alimento darle a las aves, tomando en cuenta la cantidad de aves según su tipo y etapa, la tabla alimenticia parametrizada y la cantidad de veces al día que se alimenta.
@@ -216,11 +211,16 @@ El sistema debe mostrar cuánto alimento se tiene disponible en libras, calculad
 **RF-14. Proyectar necesidad de compra**
 El sistema debe proyectar cuánta cantidad de alimento se va a necesitar en un periodo de tiempo definido y cuánto costaría esa compra, usando como base el consumo promedio y el precio por libra registrado.
 
-**RF-15. Enviar notificación de alimentación**
-El sistema debe enviar una notificación por Telegram al celular registrado, avisando la hora de alimentar y la cantidad recomendada.
+**RF-15. Recordatorio de alimentación**
+A cada hora configurada, el sistema debe enviar un recordatorio por Telegram con la cantidad de alimento que corresponde dar en esa toma.
+
 
 **RF-16. Enviar notificación de inventario bajo**
 El sistema debe enviar una notificación por Telegram cuando el inventario de alimento esté por agotarse.
+
+**RF-17. Vincular Telegram**
+Desde la pantalla de configuración, la usuaria debe poder vincular su cuenta de Telegram con el bot de Plumita. El sistema le muestra un enlace al bot; ella toca "Iniciar" y la cuenta queda vinculada para recibir mensajes.
+
 
 ### 3.2. Requisitos no funcionales (RNF)
 
@@ -230,8 +230,8 @@ El sistema debe estar diseñado principalmente para usarse desde el navegador de
 **RNF-02. Tiempo de carga**
 Las pantallas principales deben cargar en menos de 2 segundos.
 
-**RNF-03. Actualización automática de edad**
-El sistema debe actualizar todos los días la edad de cada ave, tomando como base la fecha de ingreso registrada, para mantener correcto el conteo por etapa y el cálculo de alimento.
+**RNF-03. Cálculo automático de edad**
+El sistema no guarda la edad actual del ave, sino que la calcula cada vez que la necesita, sumando la edad estimada al ingresar más las semanas que han pasado desde la fecha de ingreso. Así la edad y la etapa siempre están al día sin depender de un proceso diario.
 
 **RNF-04. Tabla alimenticia parametrizada**
 El sistema debe contar con una tabla alimenticia organizada por tipo de ave y etapa (pollito o adulto). Esta tabla se carga durante el desarrollo del sistema y no puede ser editada por la usuaria.
@@ -243,15 +243,19 @@ Cada registro de alimentación debe guardar la hora exacta en la que se realizó
 Al registrar una compra, el sistema debe guardar el precio por libra pagado, ya que ese valor se usa como base para proyectar el costo de la próxima compra.
 
 **RNF-07. Margen de error en la proyección**
-La proyección de alimento necesario debe incluir un porcentaje de margen configurable, para cubrir los casos en los que se da un poco más de alimento del recomendado.
+La proyección a 15 días incluye un margen del 10 % por defecto, para cubrir los días en que se da un poco más de lo recomendado.
 
 **RNF-08. Disponibilidad durante pruebas**
 El sistema debe mantenerse disponible durante el periodo de pruebas con la usuaria real, sin que esto implique una garantía formal de disponibilidad a nivel empresarial.
 
+**RNF-09. Umbral de inventario bajo**
+El sistema considera que el alimento está por agotarse cuando alcanza para 3 días o menos, según el consumo diario calculado.
+
+
 ### 3.3. Dependencias
 
 **Telegram (Bot API)**
-El sistema depende de la API de Telegram para el envío de notificaciones. Es necesario que la usuaria vincule su número de celular con el bot configurado, para que las alertas de alimentación e inventario le lleguen correctamente.
+Telegram no permite que un bot le escriba a alguien solo con su número de celular. Por eso la usuaria debe abrir el bot de Plumita desde el enlace que le da la app y tocar "Iniciar". En ese momento el sistema guarda su identificador de chat y a partir de ahí ya puede mandarle recordatorios y alertas.
 
 **Servicio de hosting web**
 El sistema depende de un servicio de hosting para que la aplicación web esté disponible durante el periodo de pruebas con la usuaria.
@@ -283,23 +287,27 @@ Permite editar el número de celular y la contraseña de la cuenta, así como la
 
 ### 3.5.1. Actualización automática de la edad
 
-Cada ave guarda una fecha aproximada de ingreso a la granja y la edad estimada que tenía en ese momento. A partir de esos dos datos, el sistema calcula todos los días cuántos días o meses han pasado, y con eso actualiza la edad actual de cada ave. De esa edad depende directamente en qué etapa está clasificada el ave (pollito o adulto), lo cual afecta el cálculo de alimento.
+Cada ave guarda su fecha aproximada de ingreso y la edad estimada en semanas que tenía en ese momento. Cuando el sistema necesita saber su edad, hace esta cuenta:
+
+> edad actual (semanas) = edad estimada al ingresar + semanas transcurridas desde la fecha de ingreso
+
+Si la edad actual no pasa del límite de pollito de su tipo, el ave está en etapa pollito; si lo pasa, está en etapa adulto.
 
 ```mermaid
 flowchart TD
-    A[Fecha de ingreso + edad estimada al ingresar] --> B[Proceso diario automático]
-    B --> C[Calcular dias transcurridos desde el ingreso]
-    C --> D[Actualizar edad actual del ave]
-    D --> E{Edad actual supera el limite de pollito?}
-    E -- Si --> F[Etapa: adulto]
-    E -- No --> G[Etapa: pollito]
-    F --> H[Actualizar conteo de aves por tipo y etapa]
-    G --> H
+    A[Fecha de ingreso + edad estimada en semanas] --> B[Calcular semanas transcurridas]
+    B --> C[Edad actual = edad estimada + semanas transcurridas]
+    C --> D{Supera el limite de pollito de su tipo?}
+    D -- Si --> E[Etapa: adulto]
+    D -- No --> F[Etapa: pollito]
 ```
 
 ### 3.5.2. Cálculo de la cantidad de alimento
 
 Cuando llega la hora de alimentar, el sistema toma la cantidad de aves agrupadas por tipo y etapa, busca en la tabla alimenticia parametrizada cuánto le corresponde a cada grupo, y divide ese total entre la cantidad de veces al día que se alimenta. El resultado es la cantidad exacta que la usuaria debe dar en ese momento.
+
+> cantidad por toma (lb) = suma de (aves activas del grupo × consumo diario por ave del grupo) ÷ horarios activos
+
 
 ```mermaid
 flowchart TD
@@ -329,7 +337,10 @@ Guarda la información de la cuenta de la usuaria y su configuración general.
 | nombre_usuario | VARCHAR | Usuario para iniciar sesión |
 | contraseña | VARCHAR | Contraseña encriptada |
 | celular | VARCHAR | Número de celular para notificaciones por Telegram |
-| veces_alimentacion_dia | INT | Cantidad de veces al día que se alimenta a las aves |
+| telegram_chat_id | VARCHAR | Identificador de chat guardado al vincular Telegram |
+| codigo_vinculacion | VARCHAR | Código temporal para vincular la cuenta con el bot |
+| margen_proyeccion_pct | DECIMAL | Margen de la proyección, 10 % por defecto |
+
 
 **tipo_ave**
 Catálogo fijo con los tipos de ave que maneja el sistema.
@@ -338,6 +349,7 @@ Catálogo fijo con los tipos de ave que maneja el sistema.
 |---|---|---|
 | id_tipo_ave | INT (PK) | Identificador único del tipo de ave |
 | nombre | VARCHAR | Nombre del tipo (gallina, gallo, pato) |
+| semanas_limite_pollito | INT | Semanas hasta las que el ave se considera pollito |
 
 **ave**
 Guarda cada ave registrada por la usuaria.
@@ -348,11 +360,11 @@ Guarda cada ave registrada por la usuaria.
 | id_usuario | INT (FK) | Usuaria dueña del ave |
 | id_tipo_ave | INT (FK) | Tipo de ave según catálogo |
 | fecha_ingreso | DATE | Fecha aproximada en la que el ave ingresó a la granja |
-| edad_estimada_ingreso_meses | INT | Edad aproximada que tenía el ave al momento de ingresar |
-| edad_actual_meses | INT | Edad actual, recalculada automáticamente cada día |
-| etapa_actual | VARCHAR | Etapa actual del ave (pollito o adulto), derivada de la edad |
+| edad_estimada_ingreso_semanas | INT | Edad aproximada en semanas al momento de ingresar |
 | descripcion | VARCHAR | Descripción breve del ave |
 | activo | BOOLEAN | Indica si el ave sigue activa o fue inactivada |
+
+
 
 **tabla_alimenticia**
 Tabla parametrizada con la cantidad de alimento recomendada. Se carga durante el desarrollo y no es editable por la usuaria.
@@ -362,17 +374,17 @@ Tabla parametrizada con la cantidad de alimento recomendada. Se carga durante el
 | id_tabla_alimenticia | INT (PK) | Identificador único del registro |
 | id_tipo_ave | INT (FK) | Tipo de ave al que aplica |
 | etapa | VARCHAR | Etapa a la que aplica (pollito o adulto) |
-| cantidad_alimento_lb | DECIMAL | Cantidad de alimento recomendada por ave, en libras |
+| consumo_diario_lb | DECIMAL | Alimento recomendado por ave al día, en libras |
 
 **registro_alimentacion**
 Bitácora de cada vez que se registró una alimentación.
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| id_registro | INT (PK) | Identificador único del registro |
-| id_usuario | INT (FK) | Usuaria que hizo el registro |
-| fecha_hora | DATETIME | Fecha y hora exacta en la que se alimentó |
-| cantidad_total_lb | DECIMAL | Cantidad total de alimento dado en ese registro |
+| id_horario | INT (PK) | Identificador del horario |
+| id_usuario | INT (FK) | Usuaria dueña del horario |
+| hora | TIME | Hora en la que se alimenta |
+| activo | BOOLEAN | Si el horario está en uso |
 
 **compra_alimento**
 Guarda cada compra de alimento registrada.
@@ -447,6 +459,16 @@ erDiagram
 
 Tomando en cuenta que el inventario disponible no se guarda como una tabla aparte: se calcula sumando lo registrado en `compra_alimento` y restando lo registrado en `registro_alimentacion`. Así se evita duplicar información y el dato siempre queda actualizado según los movimientos reales.
 
+## 4.3. Tabla alimenticia parametrizada (valores preliminares)
+
+Estos valores son aproximados y sirven para arrancar el desarrollo. Se van a confirmar en la fase de investigación.
+
+| Tipo de ave | Límite de pollito | Consumo pollito (lb/día) | Consumo adulto (lb/día) |
+|---|---|---|---|
+| Gallina | 8 semanas | 0.07 | 0.24 |
+| Gallo | 8 semanas | 0.07 | 0.26 |
+| Pato | 7 semanas | 0.13 | 0.37 |
+
 ## 5. Test
 
 ### 5.1. Casos de prueba
@@ -466,6 +488,8 @@ Tomando en cuenta que el inventario disponible no se guarda como una tabla apart
 | CP-11 | Proyección de compra | Consumo histórico y margen de error configurado | El sistema muestra cuánto alimento se necesita y el costo estimado para el periodo definido |
 | CP-12 | Notificación de inventario bajo | Inventario por debajo del umbral definido | Se envía una notificación por Telegram al celular registrado |
 | CP-13 | Edición de configuración | Cambio de celular o contraseña | Los nuevos datos quedan guardados y se usan en los siguientes envíos |
+| CP-14 | Vincular Telegram | La usuaria abre el enlace y toca "Iniciar" | La cuenta queda vinculada y llega un mensaje de bienvenida |
+| CP-15 | Recordatorio por horario | Horario configurado a una hora próxima | Llega el recordatorio con la cantidad a dar en esa toma |
 
 ## 7. Glosario
 
