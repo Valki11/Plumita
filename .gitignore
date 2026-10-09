@@ -6,4 +6,6 @@ node_modules/
 *.log
 .DS_Store
 pgdata/
-backups/
+backups/next-env.d.ts
+*.tsbuildinfo
+coverage/

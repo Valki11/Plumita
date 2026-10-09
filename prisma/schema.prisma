@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Etapa {
+  pollito
+  adulto
+}
+
+enum EstadoNotificacion {
+  pendiente
+  enviado
+  error
+  omitido
+}
+
+model Usuario {
+  id                      Int       @id @default(autoincrement()) @map("id_usuario")
+  nombreUsuario           String    @unique @map("nombre_usuario") @db.VarChar(40)
+  contrasenaHash          String    @map("contrasena_hash")
+  celular                 String    @db.VarChar(20)
+  telegramChatId          String?   @unique @map("telegram_chat_id")
+  codigoVinculacion       String?   @unique @map("codigo_vinculacion")
+  codigoVinculacionExpira DateTime? @map("codigo_vinculacion_expira") @db.Timestamptz
+  margenProyeccionPct     Decimal   @default(10) @map("margen_proyeccion_pct") @db.Decimal(5, 2)
+  alertaInventarioEnviada Boolean   @default(false) @map("alerta_inventario_enviada")
+  creadoEn                DateTime  @default(now()) @map("creado_en") @db.Timestamptz
+
+  aves           Ave[]
+  horarios       HorarioAlimentacion[]
+  alimentaciones RegistroAlimentacion[]
+  compras        CompraAlimento[]
+  notificaciones NotificacionEnviada[]
+
+  @@map("usuario")
+}
+
+model TipoAve {
+  id                   Int    @id @default(autoincrement()) @map("id_tipo_ave")
+  nombre               String @unique @db.VarChar(20)
+  semanasLimitePollito Int    @map("semanas_limite_pollito")
+
+  aves     Ave[]
+  consumos TablaAlimenticia[]
+
+  @@map("tipo_ave")
+}
+
+model Ave {
+  id                         Int      @id @default(autoincrement()) @map("id_ave")
+  idUsuario                  Int      @map("id_usuario")
+  idTipoAve                  Int      @map("id_tipo_ave")
+  fechaIngreso               DateTime @map("fecha_ingreso") @db.Date
+  edadEstimadaIngresoSemanas Int      @map("edad_estimada_ingreso_semanas")
+  descripcion                String   @default("") @db.VarChar(120)
+  activo                     Boolean  @default(true)
+
+  usuario Usuario @relation(fields: [idUsuario], references: [id])
+  tipo    TipoAve @relation(fields: [idTipoAve], references: [id])
+
+  @@index([idUsuario, activo])
+  @@map("ave")
+}
+
+model TablaAlimenticia {
+  id              Int     @id @default(autoincrement()) @map("id_tabla_alimenticia")
+  idTipoAve       Int     @map("id_tipo_ave")
+  etapa           Etapa
+  consumoDiarioLb Decimal @map("consumo_diario_lb") @db.Decimal(6, 3)
+
+  tipo TipoAve @relation(fields: [idTipoAve], references: [id])
+
+  @@unique([idTipoAve, etapa])
+  @@map("tabla_alimenticia")
+}
+
+model HorarioAlimentacion {
+  id        Int     @id @default(autoincrement()) @map("id_horario")
+  idUsuario Int     @map("id_usuario")
+  hora      String  @db.VarChar(5)
+  activo    Boolean @default(true)
+
+  usuario        Usuario               @relation(fields: [idUsuario], references: [id])
+  notificaciones NotificacionEnviada[]
+
+  @@unique([idUsuario, hora])
+  @@map("horario_alimentacion")
+}
+
+model RegistroAlimentacion {
+  id              Int      @id @default(autoincrement()) @map("id_registro")
+  idUsuario       Int      @map("id_usuario")
+  fechaHora       DateTime @default(now()) @map("fecha_hora") @db.Timestamptz
+  cantidadTotalLb Decimal  @map("cantidad_total_lb") @db.Decimal(8, 2)
+
+  usuario Usuario @relation(fields: [idUsuario], references: [id])
+
+  @@index([idUsuario, fechaHora(sort: Desc)])
+  @@map("registro_alimentacion")
+}
+
+model CompraAlimento {
+  id                Int      @id @default(autoincrement()) @map("id_compra")
+  idUsuario         Int      @map("id_usuario")
+  fecha             DateTime @db.Date
+  cantidadLb        Decimal  @map("cantidad_lb") @db.Decimal(8, 2)
+  precioTotalQtz    Decimal  @map("precio_total_qtz") @db.Decimal(10, 2)
+  precioPorLibraQtz Decimal  @map("precio_por_libra_qtz") @db.Decimal(10, 4)
+  creadoEn          DateTime @default(now()) @map("creado_en") @db.Timestamptz
+
+  usuario Usuario @relation(fields: [idUsuario], references: [id])
+
+  @@index([idUsuario, fecha(sort: Desc), id(sort: Desc)])
+  @@map("compra_alimento")
+}
+
+model NotificacionEnviada {
+  id        Int                @id @default(autoincrement()) @map("id_notificacion")
+  idUsuario Int                @map("id_usuario")
+  idHorario Int                @map("id_horario")
+  fecha     DateTime           @db.Date
+  estado    EstadoNotificacion @default(pendiente)
+  intentos  Int                @default(0)
+  detalle   String?
+  creadoEn  DateTime           @default(now()) @map("creado_en") @db.Timestamptz
+  enviadoEn DateTime?          @map("enviado_en") @db.Timestamptz
+
+  usuario Usuario             @relation(fields: [idUsuario], references: [id])
+  horario HorarioAlimentacion @relation(fields: [idHorario], references: [id], onDelete: Cascade)
+
+  @@unique([idUsuario, idHorario, fecha])
+  @@map("notificacion_enviada")
+}
+
+model IntentoLogin {
+  clave          String    @id
+  intentos       Int       @default(0)
+  ventanaInicio  DateTime  @map("ventana_inicio") @db.Timestamptz
+  bloqueadoHasta DateTime? @map("bloqueado_hasta") @db.Timestamptz
+
+  @@map("intento_login")
+}
