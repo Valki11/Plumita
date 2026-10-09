@@ -298,7 +298,7 @@ Todo con fechas calendario en America/Guatemala, que no tiene horario de verano.
 | `proyeccion15(consumo, inventario, margenPct, precioUltimaCompra)` | `lb = max(0, consumo × 15 × (1 + margen/100) − inventario)`. El costo es `lb × precio`, o `null` sin compras. |
 | `horarioParaMostrar(horariosActivos, ahora)` | Activo más reciente ya pasado hoy. Si ninguno, el primero de mañana. |
 
-Redondeo solo en la presentación: 1 decimal en cantidades, 2 en dinero. Decimales con `Prisma.Decimal` o `decimal.js` en los cálculos, sin `number` para dinero.
+Redondeo solo en la presentación: 2 decimales en cantidades y en dinero. Decimales con `Prisma.Decimal` o `decimal.js` en los cálculos, sin `number` para dinero.
 
 ## 6. Endpoints y acciones
 

@@ -63,9 +63,9 @@ describe("cantidadPorToma", () => {
 });
 
 describe("redondearLb", () => {
-  it("redondea a un decimal hacia arriba en la mitad", () => {
-    expect(redondearLb(new Decimal("1.61")).toString()).toBe("1.6");
-    expect(redondearLb(new Decimal("1.45")).toString()).toBe("1.5");
-    expect(redondearLb(new Decimal("1.44")).toString()).toBe("1.4");
+  it("redondea a dos decimales hacia arriba en la mitad", () => {
+    expect(redondearLb(new Decimal("0.686666")).toString()).toBe("0.69");
+    expect(redondearLb(new Decimal("1.005")).toString()).toBe("1.01");
+    expect(redondearLb(new Decimal("1.004")).toString()).toBe("1");
   });
 });

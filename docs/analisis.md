@@ -34,7 +34,7 @@ Los RF-01 a RF-17 vienen del DAD. Cambian RF-06, RF-07, RF-15 y RF-17, y se aña
 - **D-1** El tipo de ave no se edita. Si se equivocó, se inactiva y se crea otra. Así no se reinterpreta el historial.
 - **D-2** Se añade el botón "Cerrar sesión" en Ajustes. Sin él, la usuaria no puede salir desde el celular.
 - **D-3** RF-20 queda como mejora de baja prioridad. Se implementa solo si sobra tiempo en F6.
-- **D-4** Cantidad mostrada y prellenada con 1 decimal, como en el mockup ("1.4 lb"). Se guarda lo que la usuaria confirma, con 2 decimales.
+- **D-4** Cantidad mostrada y prellenada con 2 decimales (se quitan los ceros sobrantes: "1.4 lb", "0.69 lb"). Se guarda lo que la usuaria confirma, con 2 decimales. Revisada el 9/10 para que la proyección coincida con las fórmulas del DAD sin pérdida de precisión.
 - **D-5** Edad siempre en semanas en toda la UI, sin meses ni textos de apoyo.
 - **D-6** En Alimentar, el horario solo cambia la etiqueta ("Mañana · 6:30 a.m."). Se muestra el activo más reciente que ya pasó hoy, o el próximo si ninguno ha pasado.
 

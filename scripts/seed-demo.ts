@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { hashearContrasena } from "../src/server/auth/hash";
+import { reiniciarUsuario } from "./comun";
 import { aFechaDB, ahora, fechaISO, minutosDeHora, sumarDias } from "../src/lib/tiempo";
 
 const prisma = new PrismaClient();
@@ -32,24 +32,7 @@ function instante(fecha: string, hora: string): Date {
 }
 
 async function main() {
-  const existente = await prisma.usuario.findUnique({ where: { nombreUsuario: USUARIO } });
-  if (existente) {
-    const donde = { idUsuario: existente.id };
-    await prisma.notificacionEnviada.deleteMany({ where: donde });
-    await prisma.horarioAlimentacion.deleteMany({ where: donde });
-    await prisma.registroAlimentacion.deleteMany({ where: donde });
-    await prisma.compraAlimento.deleteMany({ where: donde });
-    await prisma.ave.deleteMany({ where: donde });
-    await prisma.usuario.delete({ where: { id: existente.id } });
-  }
-
-  const usuario = await prisma.usuario.create({
-    data: {
-      nombreUsuario: USUARIO,
-      contrasenaHash: await hashearContrasena(CONTRASENA),
-      celular: "+502 5555 1234",
-    },
-  });
+  const usuario = await reiniciarUsuario(prisma, USUARIO, CONTRASENA, "+502 5555 1234");
 
   const tipos = await prisma.tipoAve.findMany();
   const hoy = fechaISO(ahora());

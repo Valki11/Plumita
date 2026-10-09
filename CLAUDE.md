@@ -44,7 +44,7 @@ Antes de dar una tarea por terminada: `npm run lint && npm run typecheck && npm 
 - **Validación:** esquemas zod en `lib/validacion/`, usados por el formulario y por la acción. Todo dato del cliente se valida en servidor.
 - **Autorización:** cada acción llama `requerirUsuario()` y filtra por el `idUsuario` de la sesión.
 - **Tiempo:** toda lógica de fechas pasa por `lib/tiempo.ts` (America/Guatemala). No usar `new Date()` ni `Date.now()` fuera de ese módulo, y las funciones de dominio reciben `ahora` o `hoy` por parámetro.
-- **Dinero y cantidades:** `Decimal`, nunca `number` para dinero. Redondear solo al mostrar: 1 decimal en libras, 2 en quetzales.
+- **Dinero y cantidades:** `Decimal`, nunca `number` para dinero. Redondear solo al mostrar: 2 decimales en libras y en quetzales.
 - **Edad:** en semanas, siempre calculada con `server/dominio/edad.ts`. No se guarda ni la edad ni la etapa.
 - **Constantes:** en `lib/constantes.ts` (`MAX_HORARIOS = 3`, `DIAS_PROYECCION = 15`, `UMBRAL_DIAS_ALERTA = 3`, `VENTANA_RECORDATORIO_MIN = 10`, `OMITIR_SI_ALIMENTO_MIN = 60`).
 - **UI:** usar los tokens y clases de Organic (`var(--color-*)`, `.btn`, `.card`...). No escribir hex, fuentes ni px que un token ya tenga. Íconos Lucide con trazo 2.75. Mobile-first, objetivos táctiles de 44 px, texto pequeño en acento con `--color-accent-700`.

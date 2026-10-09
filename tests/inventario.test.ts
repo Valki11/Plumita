@@ -44,13 +44,13 @@ describe("proyeccion", () => {
 
   it("calcula libras con margen y costo con el precio de la última compra", () => {
     const resultado = proyeccion(consumo, d("18"), margen, d("2"));
-    expect(resultado.libras.toString()).toBe("35.1");
-    expect(resultado.costo?.toString()).toBe("70.2");
+    expect(resultado.libras.toString()).toBe("35.13");
+    expect(resultado.costo?.toString()).toBe("70.26");
   });
 
   it("aplica el margen sobre 15 días de consumo", () => {
     const resultado = proyeccion(consumo, d("0"), margen, null);
-    expect(resultado.libras.toString()).toBe("53.1");
+    expect(resultado.libras.toString()).toBe("53.13");
   });
 
   it("es 0 cuando el inventario cubre los 15 días con margen", () => {
@@ -61,7 +61,7 @@ describe("proyeccion", () => {
 
   it("no devuelve costo si todavía no hay compras", () => {
     const resultado = proyeccion(consumo, d("18"), margen, null);
-    expect(resultado.libras.toString()).toBe("35.1");
+    expect(resultado.libras.toString()).toBe("35.13");
     expect(resultado.costo).toBeNull();
   });
 

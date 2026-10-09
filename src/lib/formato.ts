@@ -1,8 +1,8 @@
 import type Decimal from "decimal.js";
 
 export function formatearLb(cantidad: Decimal | number): string {
-  const texto = Number(cantidad.toString()).toFixed(1);
-  return `${texto.endsWith(".0") ? texto.slice(0, -2) : texto} lb`;
+  const texto = Number(cantidad.toString()).toFixed(2).replace(/\.?0+$/, "");
+  return `${texto} lb`;
 }
 
 export function formatearQuetzales(monto: Decimal | number): string {

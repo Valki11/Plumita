@@ -29,7 +29,7 @@ export function proyeccion(
 ): Proyeccion {
   const necesario = consumoDiario.times(dias).times(new Decimal(1).plus(margenPct.div(100)));
   const faltante = Decimal.max(0, necesario.minus(inventario));
-  const libras = faltante.toDecimalPlaces(1, Decimal.ROUND_HALF_UP);
+  const libras = faltante.toDecimalPlaces(2, Decimal.ROUND_HALF_UP);
   const costo = precioUltimaCompra
     ? libras.times(precioUltimaCompra).toDecimalPlaces(2, Decimal.ROUND_HALF_UP)
     : null;

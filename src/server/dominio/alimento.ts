@@ -42,5 +42,5 @@ export function cantidadPorToma(consumoDiario: Decimal, horariosActivos: number)
 }
 
 export function redondearLb(cantidad: Decimal): Decimal {
-  return cantidad.toDecimalPlaces(1, Decimal.ROUND_HALF_UP);
+  return cantidad.toDecimalPlaces(2, Decimal.ROUND_HALF_UP);
 }
