@@ -10,6 +10,7 @@ import type { Resultado } from "@/server/resultado";
 export function FormularioLogin() {
   const [estado, accion] = useActionState<Resultado, FormData>(iniciarSesion, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
 
   return (
     <form action={accion} className="pila-grande" noValidate>
@@ -19,6 +20,7 @@ export function FormularioLogin() {
         placeholder="Tu nombre de usuario"
         autoComplete="username"
         autoCapitalize="none"
+        defaultValue={valores?.nombreUsuario}
         error={campos?.nombreUsuario}
         required
       />

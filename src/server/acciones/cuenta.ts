@@ -10,7 +10,7 @@ import { exito, falloDeZod, type Resultado } from "@/server/resultado";
 export async function actualizarCuenta(_previo: Resultado, formData: FormData): Promise<Resultado> {
   const usuario = await requerirUsuario();
   const datos = esquemaCuenta.safeParse(Object.fromEntries(formData));
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
 
   await prisma.usuario.update({
     where: { id: usuario.id },

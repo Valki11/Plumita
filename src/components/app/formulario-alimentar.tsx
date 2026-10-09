@@ -10,6 +10,7 @@ import type { Resultado } from "@/server/resultado";
 export function FormularioAlimentar({ cantidadSugerida }: { cantidadSugerida: string }) {
   const [estado, accion] = useActionState<Resultado, FormData>(registrarAlimentacion, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
 
   return (
     <form action={accion} className="pila" noValidate>
@@ -20,7 +21,7 @@ export function FormularioAlimentar({ cantidadSugerida }: { cantidadSugerida: st
         inputMode="decimal"
         min={0}
         step="any"
-        defaultValue={cantidadSugerida}
+        defaultValue={valores?.cantidad ?? cantidadSugerida}
         error={campos?.cantidad}
         required
       />

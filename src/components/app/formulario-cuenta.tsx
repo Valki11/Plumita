@@ -10,6 +10,7 @@ import type { Resultado } from "@/server/resultado";
 export function FormularioCuenta({ celular }: { celular: string }) {
   const [estado, accion] = useActionState<Resultado, FormData>(actualizarCuenta, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
 
   return (
     <form action={accion} className="pila" noValidate>
@@ -18,7 +19,7 @@ export function FormularioCuenta({ celular }: { celular: string }) {
         nombre="celular"
         type="tel"
         inputMode="tel"
-        defaultValue={celular}
+        defaultValue={valores?.celular ?? celular}
         autoComplete="tel"
         error={campos?.celular}
       />

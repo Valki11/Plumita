@@ -16,7 +16,7 @@ const MENSAJE_DUPLICADO = { hora: "Ya tienes un horario a esa hora" };
 export async function crearHorario(_previo: Resultado, formData: FormData): Promise<Resultado> {
   const usuario = await requerirUsuario();
   const datos = esquemaHorario.safeParse(Object.fromEntries(formData));
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
 
   const total = await prisma.horarioAlimentacion.count({ where: { idUsuario: usuario.id } });
   if (total >= MAX_HORARIOS) return fallo(`Puedes tener hasta ${MAX_HORARIOS} horarios.`);
@@ -24,7 +24,7 @@ export async function crearHorario(_previo: Resultado, formData: FormData): Prom
   try {
     await prisma.horarioAlimentacion.create({ data: { idUsuario: usuario.id, hora: datos.data.hora } });
   } catch (error) {
-    if (esErrorUnico(error)) return fallo("Revisa el campo marcado.", MENSAJE_DUPLICADO);
+    if (esErrorUnico(error)) return fallo("Revisa el campo marcado.", MENSAJE_DUPLICADO, formData);
     throw error;
   }
   refrescar();
@@ -36,7 +36,7 @@ export async function editarHorario(_previo: Resultado, formData: FormData): Pro
   const entrada = Object.fromEntries(formData);
   const datos = esquemaHorario.safeParse(entrada);
   const id = esquemaId.safeParse(entrada);
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
   if (!id.success) return fallo("No se encontró el horario.");
 
   try {
@@ -46,7 +46,7 @@ export async function editarHorario(_previo: Resultado, formData: FormData): Pro
     });
     if (count === 0) return fallo("No se encontró el horario.");
   } catch (error) {
-    if (esErrorUnico(error)) return fallo("Revisa el campo marcado.", MENSAJE_DUPLICADO);
+    if (esErrorUnico(error)) return fallo("Revisa el campo marcado.", MENSAJE_DUPLICADO, formData);
     throw error;
   }
   refrescar();

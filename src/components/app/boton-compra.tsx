@@ -11,6 +11,7 @@ import type { Resultado } from "@/server/resultado";
 function FormularioCompra({ hoy, onCerrar }: { hoy: string; onCerrar: () => void }) {
   const [estado, accion] = useActionState<Resultado, FormData>(registrarCompra, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
 
   useEffect(() => {
     if (estado?.ok) onCerrar();
@@ -18,7 +19,7 @@ function FormularioCompra({ hoy, onCerrar }: { hoy: string; onCerrar: () => void
 
   return (
     <form action={accion} className="pila" noValidate>
-      <Campo etiqueta="Fecha" nombre="fecha" type="date" max={hoy} defaultValue={hoy} error={campos?.fecha} required />
+      <Campo etiqueta="Fecha" nombre="fecha" type="date" max={hoy} defaultValue={valores?.fecha ?? hoy} error={campos?.fecha} required />
       <Campo
         etiqueta="Cantidad (lb)"
         nombre="cantidadLb"
@@ -27,6 +28,7 @@ function FormularioCompra({ hoy, onCerrar }: { hoy: string; onCerrar: () => void
         min={0}
         step="any"
         placeholder="Ej. 25"
+        defaultValue={valores?.cantidadLb}
         error={campos?.cantidadLb}
         required
       />
@@ -38,6 +40,7 @@ function FormularioCompra({ hoy, onCerrar }: { hoy: string; onCerrar: () => void
         min={0}
         step="0.01"
         placeholder="Ej. 112.50"
+        defaultValue={valores?.precioTotalQtz}
         error={campos?.precioTotalQtz}
         required
       />

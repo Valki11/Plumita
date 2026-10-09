@@ -27,6 +27,7 @@ function FormularioHorario({ edicion, onCerrar }: { edicion: NonNullable<Edicion
   const accionServidor = edicion.modo === "crear" ? crearHorario : editarHorario;
   const [estado, accion] = useActionState<Resultado, FormData>(accionServidor, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
 
   useEffect(() => {
     if (estado?.ok) onCerrar();
@@ -39,7 +40,7 @@ function FormularioHorario({ edicion, onCerrar }: { edicion: NonNullable<Edicion
         etiqueta="Hora de alimentación"
         nombre="hora"
         type="time"
-        defaultValue={edicion.modo === "editar" ? edicion.horario.hora : "07:00"}
+        defaultValue={valores?.hora ?? (edicion.modo === "editar" ? edicion.horario.hora : "07:00")}
         error={campos?.hora}
         required
       />
@@ -82,7 +83,7 @@ export function ListaHorarios({ horarios, maximo }: { horarios: HorarioVista[]; 
         </p>
       )}
       {horarios.map((horario) => (
-        <div key={horario.id} className="fila">
+        <div key={horario.id} className="fila fila-apilada">
           <div className="fila-texto">
             <span className="fila-principal">{formatearHora(horario.hora)}</span>
             <span className="fila-secundaria">{horario.activo ? "Activo" : "Desactivado"}</span>

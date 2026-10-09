@@ -10,7 +10,7 @@ import { exito, falloDeZod, type Resultado } from "@/server/resultado";
 export async function registrarAlimentacion(_previo: Resultado, formData: FormData): Promise<Resultado> {
   const usuario = await requerirUsuario();
   const datos = esquemaAlimentacion.safeParse(Object.fromEntries(formData));
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
 
   await prisma.registroAlimentacion.create({
     data: {

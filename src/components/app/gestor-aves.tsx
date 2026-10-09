@@ -28,6 +28,7 @@ function FormularioAve({
   const accionServidor = edicion.modo === "crear" ? crearAve : editarAve;
   const [estado, accion] = useActionState<Resultado, FormData>(accionServidor, null);
   const campos = estado && !estado.ok ? estado.campos : undefined;
+  const valores = estado && !estado.ok ? estado.valores : undefined;
   const ave = edicion.modo === "editar" ? edicion.ave : null;
 
   useEffect(() => {
@@ -47,9 +48,9 @@ function FormularioAve({
             Tipo de ave
           </legend>
           <div className="seg" style={{ display: "flex" }}>
-            {TIPOS.map((tipo, indice) => (
+            {TIPOS.map((tipo) => (
               <label key={tipo} className="seg-opt" style={{ flex: 1, justifyContent: "center", minHeight: 44 }}>
-                <input type="radio" name="tipo" value={tipo} defaultChecked={indice === 0} />
+                <input type="radio" name="tipo" value={tipo} defaultChecked={(valores?.tipo ?? "gallina") === tipo} />
                 {NOMBRES_TIPO[tipo]}
               </label>
             ))}
@@ -62,7 +63,7 @@ function FormularioAve({
         nombre="fechaIngreso"
         type="date"
         max={hoy}
-        defaultValue={ave?.fechaIngreso ?? hoy}
+        defaultValue={valores?.fechaIngreso ?? ave?.fechaIngreso ?? hoy}
         error={campos?.fechaIngreso}
         required
       />
@@ -73,7 +74,7 @@ function FormularioAve({
         inputMode="numeric"
         min={0}
         step={1}
-        defaultValue={ave?.edadEstimadaIngresoSemanas ?? 0}
+        defaultValue={valores?.edadSemanas ?? ave?.edadEstimadaIngresoSemanas ?? 0}
         error={campos?.edadSemanas}
         required
       />
@@ -82,7 +83,7 @@ function FormularioAve({
         nombre="descripcion"
         maxLength={120}
         placeholder="Ej. Ponedora, la más grande…"
-        defaultValue={ave?.descripcion ?? ""}
+        defaultValue={valores?.descripcion ?? ave?.descripcion ?? ""}
         error={campos?.descripcion}
       />
       <Aviso resultado={estado} />
@@ -98,7 +99,7 @@ function FormularioAve({
 
 function FilaAve({ ave, onEditar }: { ave: AveVista; onEditar: () => void }) {
   return (
-    <div className="fila">
+    <div className="fila fila-apilada">
       <div className="fila-texto">
         <span>
           <span className="fila-principal">
@@ -155,7 +156,14 @@ export function GestorAves({ grupos, hoy }: { grupos: GrupoVista[]; hoy: string 
               <span className="grupo-titulo">
                 <h2>{grupo.titulo}</h2>
                 <span>
-                  {grupo.activos} {grupo.clave === "gallinas" || grupo.clave === "patos" ? "activas" : "activos"}
+                  {grupo.activos}{" "}
+                  {grupo.clave === "gallinas" || grupo.clave === "patos"
+                    ? grupo.activos === 1
+                      ? "activa"
+                      : "activas"
+                    : grupo.activos === 1
+                      ? "activo"
+                      : "activos"}
                 </span>
               </span>
               <ChevronDown className="grupo-chevron" size={20} strokeWidth={2.75} aria-hidden="true" />

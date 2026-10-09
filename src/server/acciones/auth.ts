@@ -15,7 +15,7 @@ let hashFalso: Promise<string> | null = null;
 export async function registrarUsuario(_previo: Resultado, formData: FormData): Promise<Resultado> {
   if (!getEnv().REGISTRO_ABIERTO) return fallo("El registro está cerrado.");
   const datos = esquemaRegistro.safeParse(Object.fromEntries(formData));
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
 
   let idUsuario: number;
   try {
@@ -29,7 +29,7 @@ export async function registrarUsuario(_previo: Resultado, formData: FormData): 
     idUsuario = usuario.id;
   } catch (error) {
     if (esErrorUnico(error)) {
-      return fallo("Revisa los campos marcados.", { nombreUsuario: "Ese usuario ya existe" });
+      return fallo("Revisa los campos marcados.", { nombreUsuario: "Ese usuario ya existe" }, formData);
     }
     throw error;
   }
@@ -40,16 +40,16 @@ export async function registrarUsuario(_previo: Resultado, formData: FormData): 
 
 export async function iniciarSesion(_previo: Resultado, formData: FormData): Promise<Resultado> {
   const datos = esquemaLogin.safeParse(Object.fromEntries(formData));
-  if (!datos.success) return falloDeZod(datos.error);
+  if (!datos.success) return falloDeZod(datos.error, formData);
 
   const usuario = await prisma.usuario.findUnique({ where: { nombreUsuario: datos.data.nombreUsuario } });
   if (!usuario) {
     hashFalso ??= hashearContrasena("contrasena-inexistente");
     await verificarContrasena(await hashFalso, datos.data.contrasena);
-    return fallo(MENSAJE_CREDENCIALES);
+    return fallo(MENSAJE_CREDENCIALES, undefined, formData);
   }
   if (!(await verificarContrasena(usuario.contrasenaHash, datos.data.contrasena))) {
-    return fallo(MENSAJE_CREDENCIALES);
+    return fallo(MENSAJE_CREDENCIALES, undefined, formData);
   }
 
   await crearSesion(usuario.id);

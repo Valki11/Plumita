@@ -118,6 +118,7 @@ a {
 
 .barra-titulo {
   margin: 0;
+  font-family: var(--font-heading);
   font-size: 18px;
   line-height: 1.1;
 }
@@ -395,21 +396,31 @@ a {
 
 .interruptor {
   position: relative;
-  width: 52px;
-  height: 32px;
+  width: 60px;
+  height: 44px;
   flex: none;
   padding: 0;
   border: 0;
-  border-radius: 999px;
+  background: transparent;
   cursor: pointer;
-  background: var(--color-neutral-400);
+}
+
+.interruptor::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 52px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--color-neutral-500);
 }
 
 .interruptor::after {
   content: "";
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: 10px;
+  left: 8px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -417,12 +428,29 @@ a {
   transition: transform 0.15s;
 }
 
-.interruptor[aria-checked="true"] {
+.interruptor[aria-checked="true"]::before {
   background: var(--color-accent-2-700);
 }
 
 .interruptor[aria-checked="true"]::after {
   transform: translateX(20px);
+}
+
+.seg-opt:has(input:checked) {
+  background: var(--color-accent-700);
+}
+
+.fila-apilada {
+  flex-wrap: wrap;
+}
+
+.fila-apilada > .fila-texto {
+  flex: 1 1 100%;
+}
+
+.fila-apilada > .fila-acciones {
+  flex: 1 1 100%;
+  justify-content: flex-end;
 }
 
 .dialogo {
