@@ -21,6 +21,7 @@ Disponibles a medida que avanza la F1.
 ```bash
 docker compose up -d db          # solo la base para desarrollo
 npm run dev                      # app en el host, http://localhost:3000
+npm run seed:demo                # usuaria rosa / plumita123 con datos de demostración
 docker compose up --build -d     # stack completo
 npm run lint
 npm run typecheck                # tsc --noEmit
@@ -36,7 +37,7 @@ Antes de dar una tarea por terminada: `npm run lint && npm run typecheck && npm 
 
 ## Convenciones
 
-- **Idioma:** dominio, modelos, tablas, rutas, UI y mensajes en español (`Ave`, `registrarCompra`, `/alimentar`). Infraestructura y convenciones de Next en inglés (`middleware`, `layout`, `page`).
+- **Idioma:** dominio, modelos, tablas, rutas, UI y mensajes en español (`Ave`, `registrarCompra`, `/alimentar`). Infraestructura y convenciones de Next en inglés (`layout`, `page`).
 - **Archivos:** kebab-case. Componentes React en PascalCase dentro de archivos kebab-case. Un componente por archivo.
 - **Estructura:** la de `docs/arquitectura.md` §3. `server/dominio` son funciones puras que no importan Prisma, Next ni Telegram. Los componentes no importan Prisma.
 - **Mutaciones:** Server Actions en `server/acciones/`, que devuelven `Resultado<T>`. La única ruta HTTP es `/api/health`.

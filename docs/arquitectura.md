@@ -28,7 +28,7 @@ C4Container
     Person(linda, "Linda", "Navegador del celular, misma red local")
     System_Ext(telegram, "Telegram Bot API")
     System_Boundary(compose, "Docker Compose") {
-        Container(app, "app", "Next.js 15, Node 22", "UI (Server Components), Server Actions, planificador de recordatorios y consumidor de long polling. Un solo proceso.")
+        Container(app, "app", "Next.js 16, Node 22", "UI (Server Components), Server Actions, planificador de recordatorios y consumidor de long polling. Un solo proceso.")
         ContainerDb(db, "db", "PostgreSQL 16", "Datos de la granja. Volumen pgdata.")
     }
     Rel(linda, app, "HTTP :3000", "IP de la red local")
@@ -77,7 +77,7 @@ plumita/
 │  └─ seed.ts                    tipo_ave y tabla_alimenticia (upsert)
 ├─ src/
 │  ├─ instrumentation.ts         arranca planificador y long polling
-│  ├─ middleware.ts              redirige sin cookie a /login
+│  ├─ (sin middleware)           la sesión se exige en (app)/layout.tsx y en cada acción
 │  ├─ app/
 │  │  ├─ layout.tsx, globals.css (importa styles.css de Organic)
 │  │  ├─ (auth)/login/page.tsx
@@ -416,7 +416,7 @@ Logs: `console` con una línea JSON (`nivel`, `evento`, `usuarioId`, `detalle`).
 ## 9. Seguridad
 
 - **Contraseñas:** `@node-rs/argon2` (argon2id) con parámetros por defecto de la librería.
-- **Sesión:** JWT HS256 firmado con `SESSION_SECRET` (`jose`), en cookie `httpOnly`, `sameSite=lax`, 30 días, `secure` según `COOKIE_SECURE`. `middleware.ts` solo comprueba que exista y sea válida. Cada acción vuelve a comprobar.
+- **Sesión:** JWT HS256 firmado con `SESSION_SECRET` (`jose`), en cookie `httpOnly`, `sameSite=lax`, 30 días, `secure` según `COOKIE_SECURE`. No hay middleware: el layout autenticado y cada acción comprueban la sesión.
 - **Rate limiting:** tabla `intento_login`, con claves `u:<usuario>` e `ip:<ip>`. 5 fallos en 15 min bloquean 15 min. Un login correcto borra la clave de usuario.
 - **CSRF:** las Server Actions de Next comprueban `Origin`. Con `sameSite=lax` es suficiente.
 - **Autorización:** cada consulta y escritura se filtra por `idUsuario` de la sesión.
