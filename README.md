@@ -39,3 +39,4 @@ npm run dev
 | `npm run build` | Build de producción |
 | `npm run seed` | Carga el catálogo de tipos de ave y la tabla alimenticia |
 | `npm run seed:demo` | Recrea la usuaria de demostración con aves, horarios, compras y alimentaciones |
+| `npm run seed:caso` | Recrea la usuaria `demo` con el caso verificable de la demostración (ver [docs/demo.md](docs/demo.md)) |
