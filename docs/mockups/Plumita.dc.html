@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-1bcc20a9-e1b9-419d-9738-b6605f939ef0/styles.css">
+<style>
+body{margin:0}
+::-webkit-scrollbar{width:0;height:0}
+input[type="date"]{font-family:var(--font-body)}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--color-neutral-300);padding:48px 20px;font-family:var(--font-body);box-sizing:border-box">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="390px,844px">
+<div style="height:100%;width:100%;display:flex;flex-direction:column;background:var(--color-bg);overflow:hidden;font-family:var(--font-body);color:var(--color-text);position:relative;box-sizing:border-box">
+
+<sc-if value="{{ showAuth }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;overflow:auto;padding:64px 26px 40px;display:flex;flex-direction:column;box-sizing:border-box">
+
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:36px">
+<div style="width:74px;height:74px;border-radius:999px;background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;color:var(--color-accent-700)">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+</div>
+<h1 style="font-size:30px;margin:6px 0 0">Plumita</h1>
+<p style="font-size:13px;opacity:0.65;margin:0;text-align:center">Control de alimentación de tu granja</p>
+</div>
+<div class="stack" style="display:grid;gap:16px">
+<div class="field"><label for="lg-user">Usuario</label><input class="input" id="lg-user" type="text" placeholder="Tu nombre de usuario" value="{{ loginUser }}" onChange="{{ onLoginUserChange }}"></div>
+<div class="field"><label for="lg-pass">Contraseña</label><input class="input" id="lg-pass" type="password" placeholder="Tu contraseña" value="{{ loginPass }}" onChange="{{ onLoginPassChange }}"></div>
+<sc-if value="{{ loginErr }}"><p style="color:var(--color-accent-700);font-size:13px;margin:0">{{ loginErr }}</p></sc-if>
+<button type="button" class="btn btn-primary btn-block" style="height:48px;font-size:16px" onClick="{{ doLogin }}">Iniciar sesión</button>
+</div>
+<p style="text-align:center;font-size:14px;margin-top:24px">¿No tienes cuenta? <a href="#" onClick="{{ goRegistro }}" style="color:var(--color-accent-700);font-weight:600">Regístrate</a></p>
+</sc-if>
+
+<sc-if value="{{ isRegistro }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:28px">
+<button type="button" onClick="{{ goLogin }}" aria-label="Volver" style="background:none;border:none;padding:6px;cursor:pointer;color:var(--color-text)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<h1 style="font-size:24px;margin:0">Crear cuenta</h1>
+</div>
+<p style="font-size:13px;opacity:0.7;margin:0 0 20px">Así podrás avisarte por Telegram cuando el alimento se esté acabando.</p>
+<div class="stack" style="display:grid;gap:16px">
+<div class="field"><label for="rg-user">Usuario</label><input class="input" id="rg-user" type="text" placeholder="Elige un nombre de usuario" value="{{ regUser }}" onChange="{{ onRegUserChange }}"></div>
+<div class="field"><label for="rg-pass">Contraseña</label><input class="input" id="rg-pass" type="password" placeholder="Crea una contraseña" value="{{ regPass }}" onChange="{{ onRegPassChange }}"></div>
+<div class="field"><label for="rg-phone">Número de celular</label><input class="input" id="rg-phone" type="tel" placeholder="Para avisos por Telegram" value="{{ regPhone }}" onChange="{{ onRegPhoneChange }}"></div>
+<sc-if value="{{ regErr }}"><p style="color:var(--color-accent-700);font-size:13px;margin:0">{{ regErr }}</p></sc-if>
+<button type="button" class="btn btn-primary btn-block" style="height:48px;font-size:16px" onClick="{{ doRegister }}">Crear cuenta</button>
+</div>
+<p style="text-align:center;font-size:14px;margin-top:24px">¿Ya tienes cuenta? <a href="#" onClick="{{ goLogin }}" style="color:var(--color-accent-700);font-weight:600">Inicia sesión</a></p>
+</sc-if>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ showApp }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink:0;padding:58px 20px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--color-divider);box-sizing:border-box">
+<div style="width:34px;height:34px;border-radius:999px;background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;color:var(--color-accent-700);flex-shrink:0">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+</div>
+<div>
+<div style="font-family:var(--font-heading);font-size:16px;line-height:1.1">Plumita</div>
+<div style="font-size:12px;opacity:0.6">{{ screenTitle }}</div>
+</div>
+</div>
+
+<div style="flex:1;overflow:auto;padding:20px 20px 24px;box-sizing:border-box">
+
+<sc-if value="{{ isInicio }}" hint-placeholder-val="{{ true }}">
+<h2 style="font-size:22px;margin:0 0 4px">Hola, {{ userName }} 👋</h2>
+<p style="font-size:13px;opacity:0.65;margin:0 0 20px">Así está tu granja hoy</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+<div class="card"><span class="card-kicker">Aves activas</span><div class="card-title" style="font-size:28px">{{ totalActive }}</div><p class="card-body">en tu granja</p></div>
+<div class="card"><span class="card-kicker">Alimento</span><div class="card-title" style="font-size:28px">{{ stockLabel }}</div><p class="card-body">disponibles</p></div>
+</div>
+<div class="card" style="margin-bottom:14px;background:var(--color-accent-100)">
+<span class="card-kicker" style="color:var(--color-accent-700)">Alerta de inventario</span>
+<p class="card-body" style="opacity:1;font-size:14px;color:var(--color-accent-800)">El alimento alcanza para <strong>{{ daysLeft }} días más</strong>. Considera comprar más pronto.</p>
+</div>
+<div class="card">
+<span class="card-kicker">Próxima alimentación</span>
+<div class="card-title">{{ nextFeedLabel }}</div>
+<p class="card-body">Dar <strong>{{ nextFeedQtyLabel }}</strong> de alimento</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAves }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+<h2 style="font-size:22px;margin:0">Mis aves</h2>
+<button type="button" class="btn btn-primary btn-icon" aria-label="Agregar ave" onClick="{{ openAddAve }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div>
+<div style="display:grid;gap:12px">
+
+<div class="card" style="cursor:pointer" onClick="{{ toggleGrupoPolluelo }}">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-2-100);color:var(--color-accent-2-700);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+<div style="flex:1"><div class="card-title" style="font-size:15px">Polluelos</div><div class="card-body" style="font-size:12px">{{ countPolluelo }} activos</div></div>
+<svg width="9" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="{{ chevronStylePolluelo }}"><polyline points="9 6 15 12 9 18"/></svg>
+</div>
+<sc-if value="{{ expandedPolluelo }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:12px;display:grid;gap:8px;border-top:1px solid var(--color-divider);padding-top:12px">
+<sc-for list="{{ listPolluelo }}" as="ave" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div style="flex:1">
+<div style="font-size:13px;font-weight:600">{{ ave.monthsLabel }} · <span class="{{ ave.tagCls }}" style="{{ ave.tagStyle }}">{{ ave.statusText }}</span></div>
+<div style="font-size:12px;opacity:0.65">{{ ave.desc }}</div>
+</div>
+<button type="button" class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onEdit }}">Editar</button>
+<button type="button" class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onToggle }}">{{ ave.toggleLabel }}</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div class="card" style="cursor:pointer" onClick="{{ toggleGrupoGallo }}">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-100);color:var(--color-accent-700);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+<div style="flex:1"><div class="card-title" style="font-size:15px">Gallos</div><div class="card-body" style="font-size:12px">{{ countGallo }} activos</div></div>
+<svg width="9" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="{{ chevronStyleGallo }}"><polyline points="9 6 15 12 9 18"/></svg>
+</div>
+<sc-if value="{{ expandedGallo }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:12px;display:grid;gap:8px;border-top:1px solid var(--color-divider);padding-top:12px">
+<sc-for list="{{ listGallo }}" as="ave" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div style="flex:1">
+<div style="font-size:13px;font-weight:600">{{ ave.monthsLabel }} · <span class="{{ ave.tagCls }}" style="{{ ave.tagStyle }}">{{ ave.statusText }}</span></div>
+<div style="font-size:12px;opacity:0.65">{{ ave.desc }}</div>
+</div>
+<button type="button" class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onEdit }}">Editar</button>
+<button type="button" class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onToggle }}">{{ ave.toggleLabel }}</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div class="card" style="cursor:pointer" onClick="{{ toggleGrupoGallina }}">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-100);color:var(--color-accent-700);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+<div style="flex:1"><div class="card-title" style="font-size:15px">Gallinas</div><div class="card-body" style="font-size:12px">{{ countGallina }} activas</div></div>
+<svg width="9" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="{{ chevronStyleGallina }}"><polyline points="9 6 15 12 9 18"/></svg>
+</div>
+<sc-if value="{{ expandedGallina }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:12px;display:grid;gap:8px;border-top:1px solid var(--color-divider);padding-top:12px">
+<sc-for list="{{ listGallina }}" as="ave" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div style="flex:1">
+<div style="font-size:13px;font-weight:600">{{ ave.monthsLabel }} · <span class="{{ ave.tagCls }}" style="{{ ave.tagStyle }}">{{ ave.statusText }}</span></div>
+<div style="font-size:12px;opacity:0.65">{{ ave.desc }}</div>
+</div>
+<button type="button" class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onEdit }}">Editar</button>
+<button type="button" class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onToggle }}">{{ ave.toggleLabel }}</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div class="card" style="cursor:pointer" onClick="{{ toggleGrupoPato }}">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-2-100);color:var(--color-accent-2-700);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+<div style="flex:1"><div class="card-title" style="font-size:15px">Patos</div><div class="card-body" style="font-size:12px">{{ countPato }} activos</div></div>
+<svg width="9" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="{{ chevronStylePato }}"><polyline points="9 6 15 12 9 18"/></svg>
+</div>
+<sc-if value="{{ expandedPato }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:12px;display:grid;gap:8px;border-top:1px solid var(--color-divider);padding-top:12px">
+<sc-for list="{{ listPato }}" as="ave" hint-placeholder-count="1">
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div style="flex:1">
+<div style="font-size:13px;font-weight:600">{{ ave.monthsLabel }} · <span class="{{ ave.tagCls }}" style="{{ ave.tagStyle }}">{{ ave.statusText }}</span></div>
+<div style="font-size:12px;opacity:0.65">{{ ave.desc }}</div>
+</div>
+<button type="button" class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onEdit }}">Editar</button>
+<button type="button" class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px" onClick="{{ ave.onToggle }}">{{ ave.toggleLabel }}</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isAlimentar }}" hint-placeholder-val="{{ false }}">
+<h2 style="font-size:22px;margin:0 0 16px">Alimentar</h2>
+<div class="card" style="background:var(--color-accent-100);margin-bottom:16px;align-items:center;text-align:center;padding:24px 16px">
+<span class="card-kicker" style="color:var(--color-accent-700)">Horario actual</span>
+<div style="font-family:var(--font-heading);font-size:38px;margin:6px 0" >{{ nextFeedQtyLabel }}</div>
+<p class="card-body" style="opacity:1;color:var(--color-accent-800)">{{ nextFeedLabel }}</p>
+</div>
+<button type="button" class="btn btn-primary btn-block" style="height:52px;font-size:16px;margin-bottom:8px" onClick="{{ registerFeed }}">Ya les di de comer</button>
+<sc-if value="{{ feedToast }}" hint-placeholder-val="{{ false }}"><p style="text-align:center;font-size:13px;color:var(--color-accent-2-700);margin:0 0 20px">✓ Alimentación registrada</p></sc-if>
+<h3 style="font-size:15px;margin:24px 0 10px;opacity:0.8">Historial</h3>
+<div style="display:grid;gap:8px">
+<sc-for list="{{ feedLog }}" as="entry" hint-placeholder-count="4">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div><div style="font-size:14px;font-weight:600">{{ entry.day }}</div><div style="font-size:12px;opacity:0.65">{{ entry.time }}</div></div>
+<div class="tag tag-accent-2">{{ entry.qty }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isInventario }}" hint-placeholder-val="{{ false }}">
+<h2 style="font-size:22px;margin:0 0 16px">Inventario</h2>
+<div class="card" style="margin-bottom:12px">
+<span class="card-kicker">Disponible ahora</span>
+<div class="card-title" style="font-size:30px">{{ stockLabel }}</div>
+</div>
+<div class="card" style="margin-bottom:16px">
+<span class="card-kicker">Proyección a 15 días</span>
+<p class="card-body" style="opacity:1;font-size:14px">Necesitarás comprar <strong>{{ neededLabel }}</strong> más, un estimado de <strong>{{ neededCostLabel }}</strong>.</p>
+</div>
+<button type="button" class="btn btn-primary btn-block" style="height:48px;font-size:15px;margin-bottom:20px" onClick="{{ openPurchase }}">Registrar compra</button>
+<h3 style="font-size:15px;margin:0 0 10px;opacity:0.8">Compras anteriores</h3>
+<div style="display:grid;gap:8px">
+<sc-for list="{{ purchases }}" as="p" hint-placeholder-count="2">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)">
+<div><div style="font-size:14px;font-weight:600">{{ p.date }}</div><div style="font-size:12px;opacity:0.65">{{ p.qtyLabel }}</div></div>
+<div style="font-size:14px;font-weight:600">{{ p.priceLabel }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isConfig }}" hint-placeholder-val="{{ false }}">
+<h2 style="font-size:22px;margin:0 0 16px">Configuración</h2>
+<div style="display:grid;gap:14px;margin-bottom:20px">
+<div class="field"><label for="cf-phone">Número de celular</label><input class="input" id="cf-phone" type="tel" value="{{ cfgPhone }}" onChange="{{ onCfgPhoneChange }}"></div>
+<div class="field"><label for="cf-pass">Nueva contraseña</label><input class="input" id="cf-pass" type="password" placeholder="Dejar en blanco para no cambiar" value="{{ cfgPassword }}" onChange="{{ onCfgPasswordChange }}"></div>
+<div class="field"><label id="cf-times-label">Veces al día que se alimenta</label>
+<div class="seg" role="radiogroup" aria-labelledby="cf-times-label">
+<label class="seg-opt"><input type="radio" name="times" checked="{{ times1 }}" onChange="{{ setTimes1 }}"/>1</label>
+<label class="seg-opt"><input type="radio" name="times" checked="{{ times2 }}" onChange="{{ setTimes2 }}"/>2</label>
+<label class="seg-opt"><input type="radio" name="times" checked="{{ times3 }}" onChange="{{ setTimes3 }}"/>3</label>
+</div></div>
+</div>
+<button type="button" class="btn btn-primary btn-block" style="height:48px;margin-bottom:10px" onClick="{{ saveSettings }}">Guardar cambios</button>
+<sc-if value="{{ settingsSaved }}" hint-placeholder-val="{{ false }}"><p style="text-align:center;font-size:13px;color:var(--color-accent-2-700);margin:0 0 8px">✓ Cambios guardados</p></sc-if>
+<h3 style="font-size:15px;margin:28px 0 10px;opacity:0.8">Tabla alimenticia de referencia</h3>
+<table class="table">
+<thead><tr><th>Ave</th><th>Etapa</th><th>Ración diaria</th></tr></thead>
+<tbody>
+<tr><td>Polluelo</td><td class="text-muted">0–2 meses</td><td>0.08 lb</td></tr>
+<tr><td>Gallo / Gallina</td><td class="text-muted">Adulto</td><td>0.22 lb</td></tr>
+<tr><td>Pato</td><td class="text-muted">Adulto</td><td>0.28 lb</td></tr>
+</tbody>
+</table>
+</sc-if>
+
+</div>
+
+<div style="flex-shrink:0;display:flex;border-top:1px solid var(--color-divider);background:var(--color-bg);padding:8px 4px 22px;box-sizing:border-box">
+<button type="button" onClick="{{ goInicio }}" style="background:none;border:none;cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:{{ navColorInicio }};font-family:var(--font-body)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size:10.5px">Inicio</span></button>
+<button type="button" onClick="{{ goAves }}" style="background:none;border:none;cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:{{ navColorAves }};font-family:var(--font-body)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg><span style="font-size:10.5px">Mis aves</span></button>
+<button type="button" onClick="{{ goAlimentar }}" style="background:none;border:none;cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:{{ navColorAlimentar }};font-family:var(--font-body)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M4 11c0-3 3.5-7 8-7s8 4 8 7"/></svg><span style="font-size:10.5px">Alimentar</span></button>
+<button type="button" onClick="{{ goInventario }}" style="background:none;border:none;cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:{{ navColorInventario }};font-family:var(--font-body)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span style="font-size:10.5px">Inventario</span></button>
+<button type="button" onClick="{{ goConfig }}" style="background:none;border:none;cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:{{ navColorConfig }};font-family:var(--font-body)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v4M12 17v4M4.2 4.2l2.9 2.9M16.9 16.9l2.9 2.9M3 12h4M17 12h4M4.2 19.8l2.9-2.9M16.9 7.1l2.9-2.9"/></svg><span style="font-size:10.5px">Ajustes</span></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ aveModalOpen }}" hint-placeholder-val="{{ false }}">
+<div class="dialog-backdrop" style="position:absolute;inset:0">
+<div class="dialog" style="width:min(320px,100%)">
+<div class="dialog-title">{{ aveModalTitle }}</div>
+<div style="display:grid;gap:12px">
+<div class="field"><label>Tipo de ave</label>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<button type="button" class="tag" style="{{ pillPolluelo }};cursor:pointer;border:none" onClick="{{ setTypePolluelo }}">Polluelo</button>
+<button type="button" class="tag" style="{{ pillGallo }};cursor:pointer;border:none" onClick="{{ setTypeGallo }}">Gallo</button>
+<button type="button" class="tag" style="{{ pillGallina }};cursor:pointer;border:none" onClick="{{ setTypeGallina }}">Gallina</button>
+<button type="button" class="tag" style="{{ pillPato }};cursor:pointer;border:none" onClick="{{ setTypePato }}">Pato</button>
+</div></div>
+<div class="field"><label for="am-months">Edad estimada (meses)</label><input class="input" id="am-months" type="number" min="0" value="{{ aveFormMonths }}" onChange="{{ onAveMonthsChange }}"></div>
+<div class="field"><label for="am-desc">Descripción</label><textarea class="input" id="am-desc" rows="2" placeholder="Ej. Ponedora, la más grande…" value="{{ aveFormDesc }}" onChange="{{ onAveDescChange }}"></textarea></div>
+</div>
+<div class="dialog-actions">
+<button type="button" class="btn btn-secondary" onClick="{{ closeAveModal }}">Cancelar</button>
+<button type="button" class="btn btn-primary" onClick="{{ saveAve }}">Guardar</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ purchaseModalOpen }}" hint-placeholder-val="{{ false }}">
+<div class="dialog-backdrop" style="position:absolute;inset:0">
+<div class="dialog" style="width:min(320px,100%)">
+<div class="dialog-title">Registrar compra</div>
+<div style="display:grid;gap:12px">
+<div class="field"><label for="pm-date">Fecha</label><input class="input" id="pm-date" type="date" value="{{ purchaseFormDate }}" onChange="{{ onPurchaseDateChange }}"></div>
+<div class="field"><label for="pm-qty">Cantidad (lb)</label><input class="input" id="pm-qty" type="number" min="0" placeholder="Ej. 25" value="{{ purchaseFormQty }}" onChange="{{ onPurchaseQtyChange }}"></div>
+<div class="field"><label for="pm-price">Precio (US$)</label><input class="input" id="pm-price" type="number" min="0" step="0.01" placeholder="Ej. 13.75" value="{{ purchaseFormPrice }}" onChange="{{ onPurchasePriceChange }}"></div>
+</div>
+<div class="dialog-actions">
+<button type="button" class="btn btn-secondary" onClick="{{ closePurchaseModal }}">Cancelar</button>
+<button type="button" class="btn btn-primary" onClick="{{ savePurchase }}">Guardar</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const RATE = { polluelo: 0.08, gallo: 0.22, gallina: 0.22, pato: 0.28 };
+const TYPE_LABELS = { polluelo: 'Polluelo', gallo: 'Gallo', gallina: 'Gallina', pato: 'Pato' };
+const PRICE_PER_LB = 0.55;
+
+function fmtTime(h, m) {
+  const ampm = h >= 12 ? 'p.m.' : 'a.m.';
+  let h12 = h % 12; if (h12 === 0) h12 = 12;
+  return h12 + (m ? ':' + String(m).padStart(2, '0') : ':00') + ' ' + ampm;
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const descs = {
+      polluelo: ['Del último nacimiento', 'Aún necesita calor extra', 'Crecen rápido esta semana'],
+      gallo: ['Vigila el gallinero', 'El más grande del corral'],
+      gallina: ['Buena ponedora', 'Empolla seguido', 'Tranquila, come bien', 'La más vieja del grupo', 'Pone casi todos los días', 'Le gusta el maíz', 'Se aparta del grupo a veces'],
+      pato: ['Le encanta el agua', 'Sigue siempre a las gallinas'],
+    };
+    const counts = { polluelo: 4, gallo: 2, gallina: 7, pato: 2 };
+    let id = 1;
+    const aves = [];
+    Object.keys(counts).forEach((type) => {
+      for (let i = 0; i < counts[type]; i++) {
+        aves.push({
+          id: id++,
+          type,
+          months: type === 'polluelo' ? 1 + i : 6 + i * 2,
+          desc: descs[type][i % descs[type].length],
+          active: true,
+        });
+      }
+    });
+
+    this.state = {
+      screen: 'login',
+      loginUser: '', loginPass: '', loginErr: '',
+      regUser: '', regPass: '', regPhone: '', regErr: '',
+      aves,
+      expanded: {},
+      aveModalOpen: false, aveModalMode: 'add', aveEditId: null,
+      aveForm: { type: 'gallina', months: 6, desc: '' },
+      feedLog: [
+        { day: 'Hoy', time: fmtTime(6, 30), qty: '1.4 lb' },
+        { day: 'Ayer', time: fmtTime(17, 30), qty: '1.4 lb' },
+        { day: 'Ayer', time: fmtTime(6, 30), qty: '1.4 lb' },
+        { day: 'Anteayer', time: fmtTime(17, 30), qty: '1.4 lb' },
+      ],
+      feedToast: false,
+      stockLb: 18,
+      purchases: [
+        { date: '10 ago', qty: 25, price: 13.75 },
+        { date: '20 jul', qty: 25, price: 13.00 },
+      ],
+      purchaseModalOpen: false,
+      purchaseForm: { date: '', qty: '', price: '' },
+      cfgPhone: '+51 987 654 321', cfgPassword: '',
+      timesPerDay: 2,
+      settingsSaved: false,
+    };
+  }
+
+  dailyConsumption() {
+    return this.state.aves.filter(a => a.active).reduce((s, a) => s + RATE[a.type], 0);
+  }
+
+  scheduleSlots() {
+    const n = this.state.timesPerDay;
+    if (n === 1) return [{ h: 7, m: 0 }];
+    if (n === 3) return [{ h: 6, m: 30 }, { h: 12, m: 30 }, { h: 17, m: 30 }];
+    return [{ h: 6, m: 30 }, { h: 17, m: 30 }];
+  }
+
+  buildAveRow(a) {
+    return {
+      monthsLabel: a.months + (a.months === 1 ? ' mes' : ' meses'),
+      desc: a.desc,
+      statusText: a.active ? 'Activa' : 'Inactiva',
+      tagCls: 'tag',
+      tagStyle: a.active
+        ? 'background:var(--color-accent-2-100);color:var(--color-accent-2-800)'
+        : 'background:var(--color-neutral-200);color:var(--color-neutral-700)',
+      toggleLabel: a.active ? 'Inactivar' : 'Reactivar',
+      onToggle: () => this.setState(s => ({ aves: s.aves.map(x => x.id === a.id ? { ...x, active: !x.active } : x) })),
+      onEdit: () => this.openEditAve(a.id),
+    };
+  }
+
+  openAddAve() {
+    this.setState({ aveModalOpen: true, aveModalMode: 'add', aveEditId: null, aveForm: { type: 'gallina', months: 6, desc: '' } });
+  }
+  openEditAve(id) {
+    const a = this.state.aves.find(x => x.id === id);
+    if (!a) return;
+    this.setState({ aveModalOpen: true, aveModalMode: 'edit', aveEditId: id, aveForm: { type: a.type, months: a.months, desc: a.desc } });
+  }
+  closeAveModal() { this.setState({ aveModalOpen: false }); }
+  saveAve() {
+    const { aveModalMode, aveEditId, aveForm } = this.state;
+    const months = Number(aveForm.months) || 0;
+    if (aveModalMode === 'add') {
+      this.setState(s => ({
+        aves: [...s.aves, { id: Date.now(), type: aveForm.type, months, desc: aveForm.desc, active: true }],
+        aveModalOpen: false,
+      }));
+    } else {
+      this.setState(s => ({
+        aves: s.aves.map(x => x.id === aveEditId ? { ...x, type: aveForm.type, months, desc: aveForm.desc } : x),
+        aveModalOpen: false,
+      }));
+    }
+  }
+
+  registerFeed() {
+    const daily = this.dailyConsumption();
+    const n = this.state.timesPerDay;
+    const qty = Math.round((daily / n) * 10) / 10;
+    this.setState(s => ({
+      feedLog: [{ day: 'Hoy', time: fmtTime(new Date().getHours(), new Date().getMinutes()), qty: qty + ' lb' }, ...s.feedLog],
+      stockLb: Math.max(0, Math.round((s.stockLb - qty) * 10) / 10),
+      feedToast: true,
+    }));
+    setTimeout(() => this.setState({ feedToast: false }), 2500);
+  }
+
+  openPurchase() { this.setState({ purchaseModalOpen: true, purchaseForm: { date: '', qty: '', price: '' } }); }
+  closePurchaseModal() { this.setState({ purchaseModalOpen: false }); }
+  savePurchase() {
+    const { purchaseForm } = this.state;
+    const qty = Number(purchaseForm.qty) || 0;
+    const price = Number(purchaseForm.price) || 0;
+    if (!qty) { this.setState({ purchaseModalOpen: false }); return; }
+    const d = purchaseForm.date ? new Date(purchaseForm.date + 'T00:00:00') : new Date();
+    const dateLabel = d.toLocaleDateString('es-PE', { day: 'numeric', month: 'short' });
+    this.setState(s => ({
+      purchases: [{ date: dateLabel, qty, price }, ...s.purchases],
+      stockLb: Math.round((s.stockLb + qty) * 10) / 10,
+      purchaseModalOpen: false,
+    }));
+  }
+
+  saveSettings() {
+    this.setState({ settingsSaved: true, cfgPassword: '' });
+    setTimeout(() => this.setState({ settingsSaved: false }), 2500);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const screen = s.screen;
+    const daily = this.dailyConsumption();
+    const totalActive = s.aves.filter(a => a.active).length;
+    const daysLeft = daily > 0 ? Math.max(0, Math.floor(s.stockLb / daily)) : 0;
+    const need15 = Math.max(0, Math.round((daily * 15 - s.stockLb) * 10) / 10);
+    const needCost = Math.round(need15 * PRICE_PER_LB * 100) / 100;
+
+    const slots = this.scheduleSlots();
+    const now = new Date();
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+    let next = slots.find(sl => sl.h * 60 + sl.m > nowMin);
+    let isTomorrow = false;
+    if (!next) { next = slots[0]; isTomorrow = true; }
+    const nextFeedLabel = (isTomorrow ? 'Mañana · ' : 'Hoy · ') + fmtTime(next.h, next.m);
+    const nextFeedQty = Math.round((daily / s.timesPerDay) * 10) / 10;
+
+    const counts = { polluelo: 0, gallo: 0, gallina: 0, pato: 0 };
+    s.aves.forEach(a => { if (a.active) counts[a.type]++; });
+
+    const activeChev = 'transform:rotate(90deg);transition:transform .2s';
+    const idleChev = 'transition:transform .2s';
+
+    const typeStyle = (t) => s.aveForm.type === t
+      ? 'background:var(--color-accent);color:var(--color-bg)'
+      : 'background:var(--color-neutral-200);color:var(--color-text)';
+
+    const mutedColor = 'color-mix(in srgb, var(--color-text) 45%, transparent)';
+    const accentColor = 'var(--color-accent-700)';
+
+    return {
+      showAuth: screen === 'login' || screen === 'registro',
+      showApp: !(screen === 'login' || screen === 'registro'),
+      isLogin: screen === 'login',
+      isRegistro: screen === 'registro',
+      isInicio: screen === 'inicio',
+      isAves: screen === 'aves',
+      isAlimentar: screen === 'alimentar',
+      isInventario: screen === 'inventario',
+      isConfig: screen === 'config',
+      screenTitle: { inicio: 'Inicio', aves: 'Mis aves', alimentar: 'Alimentar', inventario: 'Inventario', config: 'Configuración' }[screen] || '',
+      userName: 'Rosa',
+
+      loginUser: s.loginUser, loginPass: s.loginPass, loginErr: s.loginErr,
+      onLoginUserChange: e => this.setState({ loginUser: e.target.value }),
+      onLoginPassChange: e => this.setState({ loginPass: e.target.value }),
+      doLogin: () => {
+        if (!s.loginUser || !s.loginPass) { this.setState({ loginErr: 'Ingresa tu usuario y contraseña.' }); return; }
+        this.setState({ screen: 'inicio', loginErr: '' });
+      },
+      goRegistro: e => { e.preventDefault(); this.setState({ screen: 'registro', regErr: '' }); },
+      goLogin: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ screen: 'login', loginErr: '' }); },
+
+      regUser: s.regUser, regPass: s.regPass, regPhone: s.regPhone, regErr: s.regErr,
+      onRegUserChange: e => this.setState({ regUser: e.target.value }),
+      onRegPassChange: e => this.setState({ regPass: e.target.value }),
+      onRegPhoneChange: e => this.setState({ regPhone: e.target.value }),
+      doRegister: () => {
+        if (!s.regUser || !s.regPass || !s.regPhone) { this.setState({ regErr: 'Completa los tres campos para continuar.' }); return; }
+        this.setState({ screen: 'inicio', regErr: '' });
+      },
+
+      totalActive, stockLabel: s.stockLb + ' lb', daysLeft,
+      nextFeedLabel, nextFeedQtyLabel: nextFeedQty + ' lb',
+
+      countPolluelo: counts.polluelo, countGallo: counts.gallo, countGallina: counts.gallina, countPato: counts.pato,
+      expandedPolluelo: !!s.expanded.polluelo, expandedGallo: !!s.expanded.gallo, expandedGallina: !!s.expanded.gallina, expandedPato: !!s.expanded.pato,
+      chevronStylePolluelo: s.expanded.polluelo ? activeChev : idleChev,
+      chevronStyleGallo: s.expanded.gallo ? activeChev : idleChev,
+      chevronStyleGallina: s.expanded.gallina ? activeChev : idleChev,
+      chevronStylePato: s.expanded.pato ? activeChev : idleChev,
+      toggleGrupoPolluelo: () => this.setState(st => ({ expanded: { ...st.expanded, polluelo: !st.expanded.polluelo } })),
+      toggleGrupoGallo: () => this.setState(st => ({ expanded: { ...st.expanded, gallo: !st.expanded.gallo } })),
+      toggleGrupoGallina: () => this.setState(st => ({ expanded: { ...st.expanded, gallina: !st.expanded.gallina } })),
+      toggleGrupoPato: () => this.setState(st => ({ expanded: { ...st.expanded, pato: !st.expanded.pato } })),
+      listPolluelo: s.aves.filter(a => a.type === 'polluelo').map(a => this.buildAveRow(a)),
+      listGallo: s.aves.filter(a => a.type === 'gallo').map(a => this.buildAveRow(a)),
+      listGallina: s.aves.filter(a => a.type === 'gallina').map(a => this.buildAveRow(a)),
+      listPato: s.aves.filter(a => a.type === 'pato').map(a => this.buildAveRow(a)),
+      openAddAve: () => this.openAddAve(),
+
+      aveModalOpen: s.aveModalOpen,
+      aveModalTitle: s.aveModalMode === 'add' ? 'Agregar ave' : 'Editar ave',
+      aveFormMonths: s.aveForm.months, aveFormDesc: s.aveForm.desc,
+      onAveMonthsChange: e => this.setState(st => ({ aveForm: { ...st.aveForm, months: e.target.value } })),
+      onAveDescChange: e => this.setState(st => ({ aveForm: { ...st.aveForm, desc: e.target.value } })),
+      pillPolluelo: typeStyle('polluelo'), pillGallo: typeStyle('gallo'), pillGallina: typeStyle('gallina'), pillPato: typeStyle('pato'),
+      setTypePolluelo: () => this.setState(st => ({ aveForm: { ...st.aveForm, type: 'polluelo' } })),
+      setTypeGallo: () => this.setState(st => ({ aveForm: { ...st.aveForm, type: 'gallo' } })),
+      setTypeGallina: () => this.setState(st => ({ aveForm: { ...st.aveForm, type: 'gallina' } })),
+      setTypePato: () => this.setState(st => ({ aveForm: { ...st.aveForm, type: 'pato' } })),
+      closeAveModal: () => this.closeAveModal(),
+      saveAve: () => this.saveAve(),
+
+      feedLog: s.feedLog, feedToast: s.feedToast,
+      registerFeed: () => this.registerFeed(),
+
+      neededLabel: need15 + ' lb', neededCostLabel: 'US$' + needCost.toFixed(2),
+      purchases: s.purchases.map(p => ({ date: p.date, qtyLabel: p.qty + ' lb', priceLabel: 'US$' + p.price.toFixed(2) })),
+      openPurchase: () => this.openPurchase(),
+      purchaseModalOpen: s.purchaseModalOpen,
+      purchaseFormDate: s.purchaseForm.date, purchaseFormQty: s.purchaseForm.qty, purchaseFormPrice: s.purchaseForm.price,
+      onPurchaseDateChange: e => this.setState(st => ({ purchaseForm: { ...st.purchaseForm, date: e.target.value } })),
+      onPurchaseQtyChange: e => this.setState(st => ({ purchaseForm: { ...st.purchaseForm, qty: e.target.value } })),
+      onPurchasePriceChange: e => this.setState(st => ({ purchaseForm: { ...st.purchaseForm, price: e.target.value } })),
+      closePurchaseModal: () => this.closePurchaseModal(),
+      savePurchase: () => this.savePurchase(),
+
+      cfgPhone: s.cfgPhone, cfgPassword: s.cfgPassword,
+      onCfgPhoneChange: e => this.setState({ cfgPhone: e.target.value }),
+      onCfgPasswordChange: e => this.setState({ cfgPassword: e.target.value }),
+      times1: s.timesPerDay === 1, times2: s.timesPerDay === 2, times3: s.timesPerDay === 3,
+      setTimes1: () => this.setState({ timesPerDay: 1 }),
+      setTimes2: () => this.setState({ timesPerDay: 2 }),
+      setTimes3: () => this.setState({ timesPerDay: 3 }),
+      settingsSaved: s.settingsSaved,
+      saveSettings: () => this.saveSettings(),
+
+      goInicio: () => this.setState({ screen: 'inicio' }),
+      goAves: () => this.setState({ screen: 'aves' }),
+      goAlimentar: () => this.setState({ screen: 'alimentar' }),
+      goInventario: () => this.setState({ screen: 'inventario' }),
+      goConfig: () => this.setState({ screen: 'config' }),
+      navColorInicio: screen === 'inicio' ? accentColor : mutedColor,
+      navColorAves: screen === 'aves' ? accentColor : mutedColor,
+      navColorAlimentar: screen === 'alimentar' ? accentColor : mutedColor,
+      navColorInventario: screen === 'inventario' ? accentColor : mutedColor,
+      navColorConfig: screen === 'config' ? accentColor : mutedColor,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

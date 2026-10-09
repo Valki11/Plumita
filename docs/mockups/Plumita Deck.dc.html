@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-1bcc20a9-e1b9-419d-9738-b6605f939ef0/styles.css">
+<style>
+body{margin:0;background:#c9bda6}
+a{color:var(--color-accent-700)}
+a:hover{color:var(--color-accent-800)}
+</style>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5ead8"/><g transform="translate(30,30)" fill="none" stroke="#8a5a2b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M36 20a16 16 0 0 0-22.6-22.6L-4 12v22h22z"/><path d="M25 9L-12 46"/><path d="M29 27H10"/></g></svg></template>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-document-role="page" data-label="Portada" data-speaker-notes="Plumita es una app para el control de alimentación de una granja avícola familiar de unas 15 aves. La usuaria es una persona adulta, no técnica, que solo usa su celular." style="background:var(--color-bg);display:flex;flex-direction:column;justify-content:center;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<div style="display:flex;align-items:center;gap:28px;margin-bottom:52px">
+<div style="width:104px;height:104px;border-radius:999px;background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;color:var(--color-accent-700)">
+<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+</div>
+<h1 style="font-size:96px;margin:0;letter-spacing:-0.02em">Plumita</h1>
+</div>
+<p style="font-size:44px;margin:0 0 24px;max-width:1200px;line-height:1.3">Control de alimentación para una granja avícola familiar</p>
+<p style="font-size:34px;margin:0;opacity:0.65">Diseño de aplicación móvil · 7 pantallas · Agosto 2026</p>
+</section>
+
+<section data-document-role="page" data-label="Contexto" data-speaker-notes="Tres restricciones guiaron todo el diseño: pocos animales, una sola usuaria, y un teléfono como único dispositivo." style="background:var(--color-bg);display:flex;flex-direction:column;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<h2 style="font-size:64px;margin:0 0 52px">Contexto de uso</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:36px">
+<div class="card" style="padding:44px">
+<div style="font-family:var(--font-heading);font-size:76px;line-height:1">15</div>
+<p style="font-size:30px;margin:16px 0 0;opacity:0.75">aves entre polluelos, gallos, gallinas y patos</p>
+</div>
+<div class="card" style="padding:44px">
+<div style="font-family:var(--font-heading);font-size:76px;line-height:1">1</div>
+<p style="font-size:30px;margin:16px 0 0;opacity:0.75">usuaria adulta, sin experiencia técnica</p>
+</div>
+<div class="card" style="padding:44px">
+<div style="font-family:var(--font-heading);font-size:76px;line-height:1">2×</div>
+<p style="font-size:30px;margin:16px 0 0;opacity:0.75">alimentaciones al día, con aviso por Telegram</p>
+</div>
+</div>
+<p style="font-size:34px;margin:52px 0 0;max-width:1400px;line-height:1.45">La interfaz usa textos claros, botones grandes y colores cálidos. Nada de tablas densas ni lenguaje corporativo.</p>
+</section>
+
+<section data-document-role="page" data-label="Mapa de pantallas" data-speaker-notes="El acceso son dos pantallas. Dentro de la app, cinco secciones siempre visibles en la barra inferior; no hay menús escondidos." style="background:var(--color-surface);display:flex;flex-direction:column;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<h2 style="font-size:64px;margin:0 0 20px">Mapa de pantallas</h2>
+<p style="font-size:32px;margin:0 0 56px;opacity:0.7">Dos pantallas de acceso y cinco secciones fijas en la barra inferior.</p>
+<div style="display:flex;align-items:center;gap:28px;margin-bottom:64px">
+<div style="background:var(--color-accent-100);color:var(--color-accent-800);border-radius:20px;padding:28px 40px;font-size:32px;font-family:var(--font-heading)">1 · Login</div>
+<div style="font-size:34px;opacity:0.45">→</div>
+<div style="background:var(--color-accent-100);color:var(--color-accent-800);border-radius:20px;padding:28px 40px;font-size:32px;font-family:var(--font-heading)">2 · Registro</div>
+<div style="font-size:34px;opacity:0.45">→</div>
+<div style="background:var(--color-accent);color:var(--color-bg);border-radius:20px;padding:28px 40px;font-size:32px;font-family:var(--font-heading)">3 · Inicio</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+<div style="background:var(--color-bg);border-radius:20px;padding:34px;font-size:30px"><div style="font-family:var(--font-heading);font-size:32px;margin-bottom:10px">4 · Mis aves</div><div style="opacity:0.65">Altas, ediciones e inactivación</div></div>
+<div style="background:var(--color-bg);border-radius:20px;padding:34px;font-size:30px"><div style="font-family:var(--font-heading);font-size:32px;margin-bottom:10px">5 · Alimentar</div><div style="opacity:0.65">Ración del horario e historial</div></div>
+<div style="background:var(--color-bg);border-radius:20px;padding:34px;font-size:30px"><div style="font-family:var(--font-heading);font-size:32px;margin-bottom:10px">6 · Inventario</div><div style="opacity:0.65">Existencias, proyección y compras</div></div>
+<div style="background:var(--color-bg);border-radius:20px;padding:34px;font-size:30px"><div style="font-family:var(--font-heading);font-size:32px;margin-bottom:10px">7 · Configuración</div><div style="opacity:0.65">Datos, horarios y tabla alimenticia</div></div>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Acceso" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="El login pide solo usuario y contraseña. El registro añade el celular, que es lo que habilita los avisos por Telegram." style="background:var(--color-bg);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:80px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Acceso y registro</h2>
+<p style="font-size:34px;margin:0 0 28px;line-height:1.45;opacity:0.8">Dos campos para entrar. El registro pide además el número de celular, que es lo que habilita los avisos por Telegram.</p>
+<ul style="font-size:32px;line-height:1.6;margin:0;padding-left:34px;opacity:0.8">
+<li style="margin-bottom:14px">Campos altos, con etiqueta visible siempre</li>
+<li style="margin-bottom:14px">Un solo botón principal por pantalla</li>
+<li>El enlace de registro queda debajo, sin competir</li>
+</ul>
+</div>
+<div style="display:flex;gap:48px" data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 800 }}" hint-size="402px,800px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;padding:56px 26px 30px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:34px">
+<div style="width:72px;height:72px;border-radius:999px;background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;color:var(--color-accent-700)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+<div style="font-family:var(--font-heading);font-size:30px">Plumita</div>
+<div style="font-size:13px;opacity:0.65">Control de alimentación de tu granja</div>
+</div>
+<div style="display:grid;gap:16px">
+<div class="field"><label>Usuario</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Tu nombre de usuario</div></div>
+<div class="field"><label>Contraseña</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Tu contraseña</div></div>
+<div class="btn btn-primary btn-block" style="height:48px;font-size:16px">Iniciar sesión</div>
+</div>
+<div style="text-align:center;font-size:14px;margin-top:26px">¿No tienes cuenta? <span style="color:var(--color-accent-700);font-weight:600">Regístrate</span></div>
+</div>
+</x-import>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 800 }}" hint-size="402px,800px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;padding:52px 26px 30px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><div style="font-family:var(--font-heading);font-size:24px;white-space:nowrap">Crear cuenta</div></div>
+<p style="font-size:13px;opacity:0.7;margin:0 0 22px">Así podrás avisarte por Telegram cuando el alimento se esté acabando.</p>
+<div style="display:grid;gap:16px">
+<div class="field"><label>Usuario</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Elige un nombre de usuario</div></div>
+<div class="field"><label>Contraseña</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Crea una contraseña</div></div>
+<div class="field"><label>Número de celular</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Para avisos por Telegram</div></div>
+<div class="btn btn-primary btn-block" style="height:48px;font-size:16px">Crear cuenta</div>
+</div>
+<div style="text-align:center;font-size:14px;margin-top:26px">¿Ya tienes cuenta? <span style="color:var(--color-accent-700);font-weight:600">Inicia sesión</span></div>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Inicio" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="El dashboard responde cuatro preguntas: cuántas aves hay, cuánto alimento queda, para cuántos días alcanza y qué toca dar en el próximo horario." style="background:var(--color-surface);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:96px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Inicio</h2>
+<p style="font-size:34px;margin:0 0 40px;line-height:1.45;opacity:0.8">La pantalla de entrada responde cuatro preguntas sin pedir ningún toque.</p>
+<div style="display:grid;gap:22px;font-size:32px">
+<div style="display:flex;gap:20px"><span style="font-family:var(--font-heading);color:var(--color-accent-700)">01</span><span>Cuántas aves activas hay</span></div>
+<div style="display:flex;gap:20px"><span style="font-family:var(--font-heading);color:var(--color-accent-700)">02</span><span>Cuánto alimento queda en el depósito</span></div>
+<div style="display:flex;gap:20px"><span style="font-family:var(--font-heading);color:var(--color-accent-700)">03</span><span>Para cuántos días alcanza</span></div>
+<div style="display:flex;gap:20px"><span style="font-family:var(--font-heading);color:var(--color-accent-700)">04</span><span>Qué ración toca en el próximo horario</span></div>
+</div>
+</div>
+<div data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 850 }}" hint-size="402px,850px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<dc-import name="PhoneTop" title="Inicio" hint-size="100%,90px"></dc-import>
+<div style="flex:1;padding:20px 18px;box-sizing:border-box;overflow:hidden">
+<div style="font-family:var(--font-heading);font-size:22px">Hola, Rosa 👋</div>
+<div style="font-size:13px;opacity:0.65;margin:4px 0 18px">Así está tu granja hoy</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+<div class="card"><span class="card-kicker">Aves activas</span><div class="card-title" style="font-size:28px">15</div><p class="card-body">en tu granja</p></div>
+<div class="card"><span class="card-kicker">Alimento</span><div class="card-title" style="font-size:28px">18 lb</div><p class="card-body">disponibles</p></div>
+</div>
+<div class="card" style="background:var(--color-accent-100);margin-bottom:14px">
+<span class="card-kicker" style="color:var(--color-accent-700)">Alerta de inventario</span>
+<p class="card-body" style="opacity:1;font-size:14px;color:var(--color-accent-800)">El alimento alcanza para <strong>6 días más</strong>. Considera comprar más pronto.</p>
+</div>
+<div class="card">
+<span class="card-kicker">Próxima alimentación</span>
+<div class="card-title">Hoy · 5:30 p.m.</div>
+<p class="card-body">Dar <strong>1.4 lb</strong> de alimento</p>
+</div>
+</div>
+<dc-import name="PhoneTabs" active="inicio" hint-size="100%,80px"></dc-import>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Mis aves" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="Cada tipo de ave es un banner con su cantidad. Al abrirlo aparecen las aves individuales con editar e inactivar. Agregar ave abre un formulario de tres campos." style="background:var(--color-bg);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:96px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Mis aves</h2>
+<p style="font-size:34px;margin:0 0 40px;line-height:1.45;opacity:0.8">Un banner por tipo de ave con su cantidad. Al abrirlo aparecen las aves una por una.</p>
+<div style="display:grid;gap:20px;font-size:32px;opacity:0.85">
+<div>Polluelo · Gallo · Gallina · Pato</div>
+<div style="height:1px;background:var(--color-divider)"></div>
+<div><strong>Agregar ave:</strong> tipo, edad estimada en meses y descripción</div>
+<div><strong>Editar ave:</strong> corrige cualquiera de los tres datos</div>
+<div><strong>Inactivar ave:</strong> deja de contarse en la ración y en el total</div>
+</div>
+</div>
+<div data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 850 }}" hint-size="402px,850px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<dc-import name="PhoneTop" title="Mis aves" hint-size="100%,90px"></dc-import>
+<div style="flex:1;padding:20px 18px;box-sizing:border-box;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+<div style="font-family:var(--font-heading);font-size:22px;white-space:nowrap">Mis aves</div>
+<div class="btn btn-primary btn-icon" style="flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+</div>
+<div style="display:grid;gap:12px">
+<div class="card" style="flex-direction:row;align-items:center;gap:12px"><div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-2-100);color:var(--color-accent-2-700);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><div style="flex:1"><div class="card-title" style="font-size:15px">Polluelos</div><div class="card-body" style="font-size:12px">4 activos</div></div></div>
+<div class="card" style="flex-direction:row;align-items:center;gap:12px"><div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-100);color:var(--color-accent-700);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><div style="flex:1"><div class="card-title" style="font-size:15px">Gallos</div><div class="card-body" style="font-size:12px">2 activos</div></div></div>
+<div class="card">
+<div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-100);color:var(--color-accent-700);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><div style="flex:1"><div class="card-title" style="font-size:15px">Gallinas</div><div class="card-body" style="font-size:12px">7 activas</div></div></div>
+<div style="margin-top:12px;border-top:1px solid var(--color-divider);padding-top:12px;display:grid;gap:8px">
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div style="flex:1"><div style="font-size:13px;font-weight:600">6 meses · <span class="tag" style="background:var(--color-accent-2-100);color:var(--color-accent-2-800)">Activa</span></div><div style="font-size:12px;opacity:0.65">Buena ponedora</div></div><div class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px">Editar</div><div class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px">Inactivar</div></div>
+<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div style="flex:1"><div style="font-size:13px;font-weight:600">8 meses · <span class="tag" style="background:var(--color-neutral-200);color:var(--color-neutral-700)">Inactiva</span></div><div style="font-size:12px;opacity:0.65">Empolla seguido</div></div><div class="btn btn-secondary" style="height:32px;font-size:12px;padding:0 10px">Editar</div><div class="btn btn-ghost" style="height:32px;font-size:12px;padding:0 10px">Reactivar</div></div>
+</div>
+</div>
+<div class="card" style="flex-direction:row;align-items:center;gap:12px"><div style="width:40px;height:40px;border-radius:999px;background:var(--color-accent-2-100);color:var(--color-accent-2-700);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><div style="flex:1"><div class="card-title" style="font-size:15px">Patos</div><div class="card-body" style="font-size:12px">2 activos</div></div></div>
+</div>
+</div>
+<dc-import name="PhoneTabs" active="aves" hint-size="100%,80px"></dc-import>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Alimentar" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="La ración se calcula con la tabla alimenticia y las aves activas, dividida entre las veces al día configuradas. Un solo botón registra la alimentación y descuenta del inventario." style="background:var(--color-surface);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:96px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Alimentar</h2>
+<p style="font-size:34px;margin:0 0 40px;line-height:1.45;opacity:0.8">La cantidad del horario actual se calcula con las aves activas y la tabla alimenticia, dividida entre las veces al día configuradas.</p>
+<div class="card" style="padding:40px;background:var(--color-bg)">
+<span class="card-kicker" style="font-size:26px">Cálculo de la ración</span>
+<p style="font-size:32px;margin:16px 0 0;line-height:1.4">15 aves activas → 2.8 lb al día → <strong>1.4 lb por horario</strong></p>
+</div>
+<p style="font-size:32px;margin:36px 0 0;opacity:0.8">Registrar la alimentación descuenta el alimento del inventario y suma la línea al historial.</p>
+</div>
+<div data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 850 }}" hint-size="402px,850px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<dc-import name="PhoneTop" title="Alimentar" hint-size="100%,90px"></dc-import>
+<div style="flex:1;padding:20px 18px;box-sizing:border-box;overflow:hidden">
+<div style="font-family:var(--font-heading);font-size:22px;margin-bottom:16px">Alimentar</div>
+<div class="card" style="background:var(--color-accent-100);align-items:center;text-align:center;padding:24px 16px;margin-bottom:16px">
+<span class="card-kicker" style="color:var(--color-accent-700)">Horario actual</span>
+<div style="font-family:var(--font-heading);font-size:38px;margin:6px 0">1.4 lb</div>
+<p class="card-body" style="opacity:1;color:var(--color-accent-800)">Hoy · 5:30 p.m.</p>
+</div>
+<div class="btn btn-primary btn-block" style="height:52px;font-size:16px">Ya les di de comer</div>
+<div style="font-size:15px;margin:24px 0 10px;opacity:0.8;font-family:var(--font-heading)">Historial</div>
+<div style="display:grid;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">Hoy</div><div style="font-size:12px;opacity:0.65">6:30 a.m.</div></div><div class="tag tag-accent-2">1.4 lb</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">Ayer</div><div style="font-size:12px;opacity:0.65">5:30 p.m.</div></div><div class="tag tag-accent-2">1.4 lb</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">Ayer</div><div style="font-size:12px;opacity:0.65">6:30 a.m.</div></div><div class="tag tag-accent-2">1.4 lb</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">Anteayer</div><div style="font-size:12px;opacity:0.65">5:30 p.m.</div></div><div class="tag tag-accent-2">1.4 lb</div></div>
+</div>
+</div>
+<dc-import name="PhoneTabs" active="alimentar" hint-size="100%,80px"></dc-import>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Inventario" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="La proyección a 15 días compara el consumo diario con lo que hay en el depósito y estima el costo de la compra faltante." style="background:var(--color-bg);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:96px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Inventario</h2>
+<p style="font-size:34px;margin:0 0 40px;line-height:1.45;opacity:0.8">Lo que hay hoy, lo que hará falta en quince días y lo que costará comprarlo.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+<div class="card" style="padding:40px"><span class="card-kicker" style="font-size:26px">Consumo diario</span><div style="font-family:var(--font-heading);font-size:60px;margin-top:12px">2.8 lb</div></div>
+<div class="card" style="padding:40px"><span class="card-kicker" style="font-size:26px">Faltante a 15 días</span><div style="font-family:var(--font-heading);font-size:60px;margin-top:12px">US$13.20</div></div>
+</div>
+<p style="font-size:32px;margin:36px 0 0;opacity:0.8">Cada compra registrada suma al depósito y queda en el historial con fecha, cantidad y precio.</p>
+</div>
+<div data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 850 }}" hint-size="402px,850px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<dc-import name="PhoneTop" title="Inventario" hint-size="100%,90px"></dc-import>
+<div style="flex:1;padding:20px 18px;box-sizing:border-box;overflow:hidden">
+<div style="font-family:var(--font-heading);font-size:22px;margin-bottom:16px">Inventario</div>
+<div class="card" style="margin-bottom:12px"><span class="card-kicker">Disponible ahora</span><div class="card-title" style="font-size:30px">18 lb</div></div>
+<div class="card" style="margin-bottom:16px"><span class="card-kicker">Proyección a 15 días</span><p class="card-body" style="opacity:1;font-size:14px">Necesitarás comprar <strong>24 lb</strong> más, un estimado de <strong>US$13.20</strong>.</p></div>
+<div class="btn btn-primary btn-block" style="height:48px;font-size:15px;margin-bottom:20px">Registrar compra</div>
+<div style="font-size:15px;margin:0 0 10px;opacity:0.8;font-family:var(--font-heading)">Compras anteriores</div>
+<div style="display:grid;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">10 ago</div><div style="font-size:12px;opacity:0.65">25 lb</div></div><div style="font-size:14px;font-weight:600">US$13.75</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:var(--radius-md);background:var(--color-neutral-100)"><div><div style="font-size:14px;font-weight:600">20 jul</div><div style="font-size:12px;opacity:0.65">25 lb</div></div><div style="font-size:14px;font-weight:600">US$13.00</div></div>
+</div>
+</div>
+<dc-import name="PhoneTabs" active="inventario" hint-size="100%,80px"></dc-import>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Configuración" data-om-validate="no_overflowing_text,no_overlapping_text" data-speaker-notes="Aquí se cambian celular, contraseña y número de alimentaciones al día. La tabla alimenticia es solo de consulta: define las raciones que usa el resto de la app." style="background:var(--color-surface);display:flex;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text);gap:96px;align-items:center">
+<div style="flex:1">
+<h2 style="font-size:64px;margin:0 0 32px">Configuración</h2>
+<p style="font-size:34px;margin:0 0 40px;line-height:1.45;opacity:0.8">Tres ajustes y una tabla de consulta. Cambiar las veces al día recalcula la ración de cada horario.</p>
+<table class="table" style="font-size:30px">
+<thead><tr><th style="font-size:28px">Ave</th><th style="font-size:28px">Etapa</th><th style="font-size:28px">Ración diaria</th></tr></thead>
+<tbody>
+<tr><td>Polluelo</td><td class="text-muted">0–2 meses</td><td>0.08 lb</td></tr>
+<tr><td>Gallo / Gallina</td><td class="text-muted">Adulto</td><td>0.22 lb</td></tr>
+<tr><td>Pato</td><td class="text-muted">Adulto</td><td>0.28 lb</td></tr>
+</tbody>
+</table>
+</div>
+<div data-om-raster="true">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="{{ 402 }}" height="{{ 850 }}" hint-size="402px,850px">
+<div style="height:100%;background:var(--color-bg);display:flex;flex-direction:column;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<dc-import name="PhoneTop" title="Configuración" hint-size="100%,90px"></dc-import>
+<div style="flex:1;padding:20px 18px;box-sizing:border-box;overflow:hidden">
+<div style="font-family:var(--font-heading);font-size:22px;margin-bottom:16px">Configuración</div>
+<div style="display:grid;gap:14px;margin-bottom:18px">
+<div class="field"><label>Número de celular</label><div class="input" style="display:flex;align-items:center">+51 987 654 321</div></div>
+<div class="field"><label>Nueva contraseña</label><div class="input" style="display:flex;align-items:center;opacity:0.5">Dejar en blanco para no cambiar</div></div>
+<div class="field"><label>Veces al día que se alimenta</label>
+<div class="seg"><div class="seg-opt">1</div><div class="seg-opt" style="background:var(--color-accent);color:var(--color-bg)">2</div><div class="seg-opt">3</div></div>
+</div>
+</div>
+<div class="btn btn-primary btn-block" style="height:48px">Guardar cambios</div>
+<div style="font-size:15px;margin:24px 0 10px;opacity:0.8;font-family:var(--font-heading)">Tabla alimenticia de referencia</div>
+<table class="table"><thead><tr><th>Ave</th><th>Etapa</th><th>Ración</th></tr></thead><tbody>
+<tr><td>Polluelo</td><td class="text-muted">0–2 meses</td><td>0.08 lb</td></tr>
+<tr><td>Gallo / Gallina</td><td class="text-muted">Adulto</td><td>0.22 lb</td></tr>
+<tr><td>Pato</td><td class="text-muted">Adulto</td><td>0.28 lb</td></tr>
+</tbody></table>
+</div>
+<dc-import name="PhoneTabs" active="config" hint-size="100%,80px"></dc-import>
+</div>
+</x-import>
+</div>
+</section>
+
+<section data-document-role="page" data-label="Criterios" data-speaker-notes="Cierre: los cuatro criterios que mantienen la app usable para una persona no técnica." style="background:var(--color-bg);display:flex;flex-direction:column;padding:100px 120px 80px;box-sizing:border-box;font-family:var(--font-body);color:var(--color-text)">
+<h2 style="font-size:64px;margin:0 0 56px">Criterios de diseño</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:44px">
+<div class="card" style="padding:44px"><div style="font-family:var(--font-heading);font-size:36px;margin-bottom:14px">Un objetivo por pantalla</div><p style="font-size:30px;margin:0;opacity:0.75">Cada sección tiene un solo botón principal, alto y del ancho completo.</p></div>
+<div class="card" style="padding:44px"><div style="font-family:var(--font-heading);font-size:36px;margin-bottom:14px">Lenguaje del corral</div><p style="font-size:30px;margin:0;opacity:0.75">"Ya les di de comer" en lugar de "registrar transacción de alimentación".</p></div>
+<div class="card" style="padding:44px"><div style="font-family:var(--font-heading);font-size:36px;margin-bottom:14px">Cuentas hechas por la app</div><p style="font-size:30px;margin:0;opacity:0.75">Raciones, días restantes y costos se calculan solos a partir de las aves activas.</p></div>
+<div class="card" style="padding:44px"><div style="font-family:var(--font-heading);font-size:36px;margin-bottom:14px">Nada oculto</div><p style="font-size:30px;margin:0;opacity:0.75">Cinco secciones fijas en la barra inferior, sin menús desplegables.</p></div>
+</div>
+</section>
+
+</x-import>
+
+</x-dc>
+</body>
+</html>
