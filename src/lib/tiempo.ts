@@ -83,3 +83,8 @@ export function etiquetaDia(instante: Date, referencia: Date): string {
   if (dias === 2) return "Anteayer";
   return formatearFechaCorta(fechaISO(instante));
 }
+
+export function esFechaValida(iso: string): boolean {
+  const fecha = aFechaDB(iso);
+  return !Number.isNaN(fecha.getTime()) && deFechaDB(fecha) === iso;
+}
