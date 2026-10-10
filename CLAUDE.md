@@ -49,7 +49,7 @@ Antes de dar una tarea por terminada: `npm run lint && npm run typecheck && npm 
 - **Constantes:** en `lib/constantes.ts` (`MAX_HORARIOS = 3`, `DIAS_PROYECCION = 15`, `UMBRAL_DIAS_ALERTA = 3`, `VENTANA_RECORDATORIO_MIN = 10`, `OMITIR_SI_ALIMENTO_MIN = 60`).
 - **UI:** usar los tokens y clases de Organic (`var(--color-*)`, `.btn`, `.card`...). No escribir hex, fuentes ni px que un token ya tenga. Íconos Lucide con trazo 2.75. Mobile-first, objetivos táctiles de 44 px, texto pequeño en acento con `--color-accent-700`.
 - **Pruebas:** Vitest. Unitarias para `dominio`, `tiempo` y validación. De integración contra PostgreSQL real para acciones, rate limit y planificador.
-- **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`, `ci:`), en español, con alcance opcional (`feat(aves): ...`). Un cambio lógico por commit.
+- **Commits:** No hagas commits, push ni git add. Deja los cambios listos y yo los subo desde mi cuenta.
 - **Ramas:** trabajo en `main` o en ramas cortas por fase (`f3-aves`).
 
 ## Reglas

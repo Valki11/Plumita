@@ -10,3 +10,6 @@ backups/
 next-env.d.ts
 *.tsbuildinfo
 coverage/
+CLAUDE.md
+docs/
+.claude
