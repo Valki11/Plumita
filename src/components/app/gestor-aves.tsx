@@ -1,11 +1,12 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { ChevronDown, Feather, Plus } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 import { Campo } from "@/components/ui/campo";
 import { Aviso } from "@/components/ui/aviso";
 import { BotonEnviar } from "@/components/ui/boton-enviar";
 import { Dialogo } from "@/components/ui/dialogo";
+import { IconoGrafico, type NombreIcono } from "@/components/ui/icono-grafico";
 import { formatearSemanas } from "@/lib/formato";
 import { cambiarEstadoAve, crearAve, editarAve } from "@/server/acciones/aves";
 import type { AveVista, GrupoVista } from "@/server/consultas/aves";
@@ -13,6 +14,13 @@ import type { Resultado } from "@/server/resultado";
 
 const NOMBRES_TIPO = { gallina: "Gallina", gallo: "Gallo", pato: "Pato" } as const;
 const TIPOS = ["gallina", "gallo", "pato"] as const;
+
+const ICONO_GRUPO: Record<GrupoVista["clave"], NombreIcono> = {
+  polluelos: "polluelo",
+  gallinas: "gallina",
+  gallos: "gallo",
+  patos: "pato",
+};
 
 type Edicion = { modo: "crear" } | { modo: "editar"; ave: AveVista } | null;
 
@@ -49,8 +57,9 @@ function FormularioAve({
           </legend>
           <div className="seg" style={{ display: "flex" }}>
             {TIPOS.map((tipo) => (
-              <label key={tipo} className="seg-opt" style={{ flex: 1, justifyContent: "center", minHeight: 44 }}>
+              <label key={tipo} className="seg-opt seg-opt-icono">
                 <input type="radio" name="tipo" value={tipo} defaultChecked={(valores?.tipo ?? "gallina") === tipo} />
+                <IconoGrafico nombre={tipo} tamano={36} />
                 {NOMBRES_TIPO[tipo]}
               </label>
             ))}
@@ -148,10 +157,10 @@ export function GestorAves({ grupos, hoy }: { grupos: GrupoVista[]; hoy: string 
           <details key={grupo.clave} className="grupo" open={grupo.clave === "polluelos" || undefined}>
             <summary>
               <span
-                className={`icono-circulo ${grupo.clave === "polluelos" || grupo.clave === "patos" ? "icono-circulo-verde" : ""}`}
+                className={`icono-circulo icono-circulo-grande ${grupo.clave === "polluelos" || grupo.clave === "patos" ? "icono-circulo-verde" : ""}`}
                 aria-hidden="true"
               >
-                <Feather size={20} strokeWidth={2.75} />
+                <IconoGrafico nombre={ICONO_GRUPO[grupo.clave]} tamano={38} />
               </span>
               <span className="grupo-titulo">
                 <h2>{grupo.titulo}</h2>

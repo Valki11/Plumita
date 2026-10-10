@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { Plus } from "lucide-react";
+import { Clock, Plus } from "lucide-react";
 import { Campo } from "@/components/ui/campo";
 import { Aviso } from "@/components/ui/aviso";
 import { BotonEnviar } from "@/components/ui/boton-enviar";
@@ -63,7 +63,8 @@ export function ListaHorarios({ horarios, maximo }: { horarios: HorarioVista[]; 
   return (
     <section aria-labelledby="titulo-horarios" className="pila">
       <div className="encabezado-seccion">
-        <h2 id="titulo-horarios" className="titulo-seccion" style={{ margin: 0 }}>
+        <h2 id="titulo-horarios" className="titulo-seccion titulo-con-icono" style={{ margin: 0 }}>
+          <Clock size={22} strokeWidth={2.75} aria-hidden="true" />
           Horarios de alimentación
         </h2>
         <button

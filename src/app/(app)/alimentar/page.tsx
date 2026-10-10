@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FormularioAlimentar } from "@/components/app/formulario-alimentar";
+import { IconoGrafico } from "@/components/ui/icono-grafico";
 import { formatearLb } from "@/lib/formato";
 import { etiquetaDia, formatearHora, horaHHMM, minutosDelDia } from "@/lib/tiempo";
 import { requerirUsuario } from "@/server/auth/sesion";
@@ -38,6 +39,7 @@ export default async function Alimentar() {
       ) : cantidad && cantidad.gt(0) ? (
         <>
           <div className="tarjeta tarjeta-centro">
+            <IconoGrafico nombre="maiz" tamano={96} />
             <p className="card-kicker">Horario actual</p>
             <p className="valor-enorme">{formatearLb(cantidad)}</p>
             <p>{formatearHora(horario)}</p>

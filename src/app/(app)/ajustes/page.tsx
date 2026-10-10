@@ -1,4 +1,5 @@
 import { FormularioCuenta } from "@/components/app/formulario-cuenta";
+import { BloqueTelegram } from "@/components/app/bloque-telegram";
 import { ListaHorarios } from "@/components/app/lista-horarios";
 import { MAX_HORARIOS } from "@/lib/constantes";
 import { formatearSemanas } from "@/lib/formato";
@@ -20,6 +21,7 @@ export default async function Ajustes() {
         horarios={horarios.map((h) => ({ id: h.id, hora: h.hora, activo: h.activo }))}
         maximo={MAX_HORARIOS}
       />
+      <BloqueTelegram />
       <section aria-labelledby="titulo-tabla">
         <h2 id="titulo-tabla" className="titulo-seccion">
           Tabla alimenticia de referencia

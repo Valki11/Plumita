@@ -512,3 +512,44 @@ a {
     transition: none;
   }
 }
+
+.icono-circulo-grande {
+  width: 56px;
+  height: 56px;
+}
+
+.seg-opt-icono {
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  padding-block: var(--space-2);
+}
+
+.btn-icono-fondo {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-bg);
+}
+
+.titulo-con-icono {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fila-icono {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.tag-proximamente {
+  background: var(--color-accent-100);
+  color: var(--color-accent-800);
+  font-size: 13px;
+}

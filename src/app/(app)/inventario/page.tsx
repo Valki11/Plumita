@@ -1,4 +1,5 @@
 import { BotonCompra } from "@/components/app/boton-compra";
+import { IconoGrafico } from "@/components/ui/icono-grafico";
 import { formatearLb, formatearQuetzales } from "@/lib/formato";
 import { deFechaDB, formatearFechaCorta } from "@/lib/tiempo";
 import { requerirUsuario } from "@/server/auth/sesion";
@@ -55,7 +56,10 @@ export default async function Inventario() {
 
       <div className="tarjeta">
         <p className="card-kicker">Disponible ahora</p>
-        <p className="valor-grande">{formatearLb(estado.inventario)}</p>
+        <div className="fila-icono">
+          <IconoGrafico nombre="concentrado" tamano={56} />
+          <p className="valor-grande">{formatearLb(estado.inventario)}</p>
+        </div>
       </div>
 
       <div className="tarjeta">

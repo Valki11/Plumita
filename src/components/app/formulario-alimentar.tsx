@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { Campo } from "@/components/ui/campo";
 import { Aviso } from "@/components/ui/aviso";
 import { BotonEnviar } from "@/components/ui/boton-enviar";
+import { IconoGrafico } from "@/components/ui/icono-grafico";
 import { registrarAlimentacion } from "@/server/acciones/alimentacion";
 import type { Resultado } from "@/server/resultado";
 
@@ -27,6 +28,9 @@ export function FormularioAlimentar({ cantidadSugerida }: { cantidadSugerida: st
       />
       <Aviso resultado={estado} />
       <BotonEnviar className="btn btn-primary btn-grande" pendiente="Registrando…">
+        <span className="btn-icono-fondo">
+          <IconoGrafico nombre="maiz" tamano={24} />
+        </span>
         Ya les di de comer
       </BotonEnviar>
     </form>
