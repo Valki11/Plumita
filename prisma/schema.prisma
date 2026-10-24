@@ -145,3 +145,18 @@ model IntentoLogin {
 
   @@map("intento_login")
 }
+
+model Auditoria {
+  id        BigInt   @id @default(autoincrement())
+  fechaHora DateTime @default(now()) @map("fecha_hora") @db.Timestamptz
+  idUsuario Int?     @map("id_usuario")
+  evento    String   @db.VarChar(40)
+  resultado String   @db.VarChar(10)
+  ip        String?  @db.VarChar(45)
+  userAgent String?  @map("user_agent") @db.VarChar(200)
+  detalle   Json?
+
+  @@index([fechaHora])
+  @@index([idUsuario, fechaHora])
+  @@map("auditoria")
+}
