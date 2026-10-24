@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T06:03:10.284Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "pasos": [
+    {
+      "nombre": "Pruebas automáticas y cobertura",
+      "estado": "ok",
+      "segundos": 22
+    },
+    {
+      "nombre": "Casos del DAD en el navegador",
+      "estado": "ok",
+      "segundos": 9
+    },
+    {
+      "nombre": "Usabilidad simulada",
+      "estado": "ok",
+      "segundos": 33
+    },
+    {
+      "nombre": "Simulación de 30 días",
+      "estado": "ok",
+      "segundos": 1
+    },
+    {
+      "nombre": "Lighthouse",
+      "estado": "ok",
+      "segundos": 85
+    },
+    {
+      "nombre": "Carga con k6",
+      "estado": "ok",
+      "segundos": 71
+    },
+    {
+      "nombre": "Bitácora de defectos",
+      "estado": "ok",
+      "segundos": 0
+    },
+    {
+      "nombre": "Casos del DAD (consolidado)",
+      "estado": "ok",
+      "segundos": 0
+    }
+  ]
+}

@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T05:59:49.316Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "herramienta": "vitest + v8",
+  "alcance": "Todos los archivos de src/, incluidos los que ninguna prueba toca (cuentan como 0 %).",
+  "total": {
+    "lineas_pct": 21.24,
+    "sentencias_pct": 23.11,
+    "funciones_pct": 24.69,
+    "ramas_pct": 18.58
+  },
+  "por_modulo": {
+    "ui": {
+      "archivos": 26,
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    "lib": {
+      "archivos": 7,
+      "lineas_pct": 59.65,
+      "sentencias_pct": 62.3,
+      "funciones_pct": 52.38,
+      "ramas_pct": 55.56
+    },
+    "servidor_otros": {
+      "archivos": 9,
+      "lineas_pct": 24.76,
+      "sentencias_pct": 28.46,
+      "funciones_pct": 15,
+      "ramas_pct": 44.16
+    },
+    "acciones": {
+      "archivos": 6,
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    "dominio": {
+      "archivos": 5,
+      "lineas_pct": 100,
+      "sentencias_pct": 98.36,
+      "funciones_pct": 100,
+      "ramas_pct": 96.97
+    }
+  },
+  "por_archivo": [
+    {
+      "archivo": "src/app/(app)/ajustes/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/(app)/alimentar/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/app/(app)/aves/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/(app)/inicio/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/app/(app)/inventario/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/app/(app)/layout.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/(auth)/layout.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/(auth)/login/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/app/(auth)/registro/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/app/api/health/route.ts",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/layout.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/app/page.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/components/app/bloque-telegram.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/components/app/boton-compra.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/formulario-alimentar.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/formulario-cuenta.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/formulario-login.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/formulario-registro.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/gestor-aves.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/lista-horarios.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/app/marco-app.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/ui/aviso.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/ui/boton-enviar.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/ui/campo.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/ui/dialogo.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/components/ui/icono-grafico.tsx",
+      "modulo": "ui",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/lib/constantes.ts",
+      "modulo": "lib",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/lib/formato.ts",
+      "modulo": "lib",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/lib/tiempo.ts",
+      "modulo": "lib",
+      "lineas_pct": 84.84,
+      "sentencias_pct": 86.48,
+      "funciones_pct": 73.33,
+      "ramas_pct": 83.33
+    },
+    {
+      "archivo": "src/lib/validacion/alimentacion.ts",
+      "modulo": "lib",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/lib/validacion/ave.ts",
+      "modulo": "lib",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/lib/validacion/cuenta.ts",
+      "modulo": "lib",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/lib/validacion/horario.ts",
+      "modulo": "lib",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/acciones/alimentacion.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/acciones/auth.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/acciones/aves.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/acciones/compras.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/acciones/cuenta.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/acciones/horarios.ts",
+      "modulo": "acciones",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/auditoria.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 75,
+      "sentencias_pct": 75,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/auth/hash.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/auth/sesion.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/consultas/aves.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/consultas/granja.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/db.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 75
+    },
+    {
+      "archivo": "src/server/dominio/alimento.ts",
+      "modulo": "dominio",
+      "lineas_pct": 100,
+      "sentencias_pct": 95.83,
+      "funciones_pct": 100,
+      "ramas_pct": 90
+    },
+    {
+      "archivo": "src/server/dominio/edad.ts",
+      "modulo": "dominio",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/dominio/horarios.ts",
+      "modulo": "dominio",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/dominio/inventario.ts",
+      "modulo": "dominio",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/dominio/tipos.ts",
+      "modulo": "dominio",
+      "lineas_pct": 100,
+      "sentencias_pct": 100,
+      "funciones_pct": 100,
+      "ramas_pct": 100
+    },
+    {
+      "archivo": "src/server/env.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    },
+    {
+      "archivo": "src/server/log.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 100,
+      "sentencias_pct": 96.77,
+      "funciones_pct": 100,
+      "ramas_pct": 92
+    },
+    {
+      "archivo": "src/server/resultado.ts",
+      "modulo": "servidor_otros",
+      "lineas_pct": 0,
+      "sentencias_pct": 0,
+      "funciones_pct": 0,
+      "ramas_pct": 0
+    }
+  ]
+}

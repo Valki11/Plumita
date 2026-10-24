@@ -1,0 +1,15 @@
+{
+  "name": "pruebas-beta",
+  "version": "0.9.0-beta",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pruebas:beta": "node scripts/todo.mjs",
+    "pruebas:resumen": "node scripts/resumen.mjs"
+  },
+  "dependencies": {
+    "chrome-launcher": "^1.2.0",
+    "lighthouse": "^12.8.2",
+    "playwright-core": "^1.55.0"
+  }
+}

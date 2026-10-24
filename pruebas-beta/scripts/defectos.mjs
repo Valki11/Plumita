@@ -1,0 +1,87 @@
+import { guardar } from "./comun.mjs";
+
+const defectos = [
+  {
+    id: "D-01",
+    titulo: "Redondeo a 1 decimal daba 0.7 lb y Q44.10",
+    descripcion: "El redondeo a 1 decimal daba 0.7 lb por toma, 19.3 lb de inventario, 14.7 lb por comprar y Q44.10, en lugar de 0.69, 19.31, 14.68 y Q44.04 que salen de las fórmulas del DAD 3.5.2 y 3.5.3.",
+    como_se_detecto: "Al contrastar el caso de demostración verificable con los valores esperados del DAD y escribir su prueba unitaria.",
+    severidad: "alta",
+    correccion: "Redondeo a 2 decimales en redondearLb, proyeccion y formatearLb; pruebas actualizadas y prueba del caso exacto (caso-demo.test.ts).",
+    commit: "5f2bb31",
+  },
+  {
+    id: "D-02",
+    titulo: "Los formularios se vaciaban tras un error de validación",
+    descripcion: "Los formularios se vaciaban tras un error de validación (por ejemplo, se perdía el precio al fallar la cantidad en una compra).",
+    como_se_detecto: "Prueba de validaciones en el navegador a 390 × 844 con Playwright.",
+    severidad: "media",
+    correccion: "Las acciones devuelven los valores enviados (sin contraseñas) y los formularios los usan como valor inicial.",
+    commit: "e85202c",
+  },
+  {
+    id: "D-03",
+    titulo: "Contraste bajo en el tipo de ave seleccionado",
+    descripcion: "Contraste bajo en el tipo de ave seleccionado del formulario: usaba el acento claro con texto crema.",
+    como_se_detecto: "Revisión visual de las capturas del diálogo en 390 × 844.",
+    severidad: "baja",
+    correccion: "La opción marcada usa --color-accent-700.",
+    commit: "e85202c",
+  },
+  {
+    id: "D-04",
+    titulo: "Filas apretadas a 390 px",
+    descripcion: "Filas apretadas a 390 px: el texto se partía en varias líneas ('Gallina · 3 / semanas', '7:00 / a.m.') porque el texto y los botones competían por el ancho.",
+    como_se_detecto: "Revisión visual de las capturas de Mis aves y Configuración en 390 × 844.",
+    severidad: "baja",
+    correccion: "Filas apiladas: texto arriba y acciones abajo (clase fila-apilada).",
+    commit: "e85202c",
+  },
+  {
+    id: "D-05",
+    titulo: "Texto \"1 activas\"",
+    descripcion: "El texto decía '1 activas' en lugar de '1 activa' cuando un grupo tenía una sola ave.",
+    como_se_detecto: "Revisión visual de la pantalla Mis aves con el caso de demostración (grupo de patos con 1 ave).",
+    severidad: "baja",
+    correccion: "Concordancia de singular y plural en el contador de cada grupo.",
+    commit: "e85202c",
+  },
+  {
+    id: "D-06",
+    titulo: "Bucle de recargas con next dev",
+    descripcion: "Con 'next dev' el navegador de pruebas entraba en un bucle de recargas (recompilaciones continuas) y el script de revisión no terminaba.",
+    como_se_detecto: "Al ejecutar la revisión automática de pantallas contra el servidor de desarrollo; el log mostraba un GET /login tras cada compilación.",
+    severidad: "baja",
+    correccion: "No se corrigió la causa. Se hicieron las pruebas contra la imagen de producción y se indicó no usar 'next dev' en la demostración.",
+    commit: null,
+  },
+  {
+    id: "D-07",
+    titulo: "Interruptor de horarios menor a 44 px",
+    descripcion: "Interruptor de horarios de 32 px de alto, por debajo del objetivo táctil de 44 px.",
+    como_se_detecto: "El script de revisión de pantallas reportó los elementos interactivos menores de 44 px en Configuración.",
+    severidad: "baja",
+    correccion: "El área táctil del interruptor pasó a 60 × 44 px, manteniendo el dibujo visible.",
+    commit: "e85202c",
+  },
+  {
+    id: "D-08",
+    titulo: ".gitignore con líneas pegadas",
+    descripcion: "El .gitignore tenía dos líneas pegadas ('backups/next-env.d.ts'), por lo que next-env.d.ts quedaba sin ignorar.",
+    como_se_detecto: "Al revisar git status después de arrancar Next, apareció next-env.d.ts como archivo nuevo.",
+    severidad: "baja",
+    correccion: "Cada patrón en su propia línea.",
+    commit: "65fd252",
+  },
+];
+
+guardar("defectos.json", {
+  fuente: "Historial de Git y notas del desarrollo. Un commit null significa que no hubo corrección en el repositorio.",
+  total: defectos.length,
+  por_severidad: {
+    alta: defectos.filter((d) => d.severidad === "alta").length,
+    media: defectos.filter((d) => d.severidad === "media").length,
+    baja: defectos.filter((d) => d.severidad === "baja").length,
+  },
+  defectos,
+});

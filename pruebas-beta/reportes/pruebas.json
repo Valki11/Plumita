@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T05:59:49.149Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "herramienta": "vitest",
+  "nota": "Las pruebas de integración corren contra la base plumita_test, no contra los datos de demo ni de simulación.",
+  "total": {
+    "archivos": 8,
+    "pruebas": 70,
+    "aprobadas": 70,
+    "fallidas": 0,
+    "omitidas": 0
+  },
+  "archivos": [
+    {
+      "archivo": "tests/alimento.test.ts",
+      "aprobadas": 11,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "consumoDiarioLb suma el consumo por tipo y etapa de una granja de 15 aves",
+          "estado": "aprobada",
+          "duracion_ms": 7
+        },
+        {
+          "nombre": "consumoDiarioLb usa el consumo de pollito mientras el ave no supera el límite",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "consumoDiarioLb cambia al consumo de adulto cuando supera el límite",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "consumoDiarioLb ignora las aves inactivas",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "consumoDiarioLb es 0 sin aves",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "contarPorGrupo separa polluelos y adultos por tipo",
+          "estado": "aprobada",
+          "duracion_ms": 2
+        },
+        {
+          "nombre": "contarPorGrupo no cuenta aves inactivas",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "cantidadPorToma divide el consumo diario entre los horarios activos",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "cantidadPorToma devuelve null sin horarios activos",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "cantidadPorToma es 0 sin aves",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "redondearLb redondea a dos decimales hacia arriba en la mitad",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        }
+      ]
+    },
+    {
+      "archivo": "tests/caso-demo.test.ts",
+      "aprobadas": 7,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 agrupa las aves como se muestra en Mis aves",
+          "estado": "aprobada",
+          "duracion_ms": 4
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 consume 2.06 lb al día",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 da 0.69 lb por toma con 3 horarios",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 deja 19.31 lb tras registrar una toma",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 alcanza para 9 días",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 proyecta 14.68 lb por comprar y Q44.04",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "caso de demostración: 4 gallinas, 2 gallos, 3 pollitas y 1 pato; 3 horarios; 20 lb por Q60 la pollita en el límite sigue siendo pollito hoy y pasa a adulta siete días después",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        }
+      ]
+    },
+    {
+      "archivo": "tests/edad.test.ts",
+      "aprobadas": 13,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "semanasTranscurridas es 0 el mismo día del ingreso",
+          "estado": "aprobada",
+          "duracion_ms": 7
+        },
+        {
+          "nombre": "semanasTranscurridas es 0 a los 6 días y 1 a los 7",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "semanasTranscurridas cuenta semanas completas",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "semanasTranscurridas nunca es negativa si la fecha de ingreso es futura",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "semanasTranscurridas cruza cambios de mes y de año",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "edadActualSemanas suma la edad estimada al ingresar y las semanas transcurridas",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "edadActualSemanas aumenta una semana al pasar siete días",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "etapaDe es pollito con edad igual al límite",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "etapaDe es adulto una semana después del límite",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "etapaDe es pollito con edad 0",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "etapaDe reclasifica al ave al superar el límite con el paso del tiempo",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "grupoDe agrupa todos los pollitos en polluelos",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "grupoDe separa los adultos por tipo",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        }
+      ]
+    },
+    {
+      "archivo": "tests/horarios.test.ts",
+      "aprobadas": 7,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "horarioParaAlimentar elige el activo más reciente que ya pasó hoy",
+          "estado": "aprobada",
+          "duracion_ms": 5
+        },
+        {
+          "nombre": "horarioParaAlimentar incluye el horario exacto de ahora",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "horarioParaAlimentar elige el próximo si ninguno ha pasado",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "horarioParaAlimentar devuelve null sin horarios",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proximaAlimentacion elige el siguiente horario de hoy",
+          "estado": "aprobada",
+          "duracion_ms": 2
+        },
+        {
+          "nombre": "proximaAlimentacion pasa a mañana cuando ya pasaron todos",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proximaAlimentacion devuelve null sin horarios",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        }
+      ]
+    },
+    {
+      "archivo": "tests/inventario.test.ts",
+      "aprobadas": 14,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "inventarioLb es compras menos consumo registrado",
+          "estado": "aprobada",
+          "duracion_ms": 8
+        },
+        {
+          "nombre": "inventarioLb es 0 sin movimientos",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "inventarioLb nunca es negativo si se consumió más de lo comprado",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "inventarioLb con consumo y sin compras es 0",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "diasAlcance redondea hacia abajo",
+          "estado": "aprobada",
+          "duracion_ms": 3
+        },
+        {
+          "nombre": "diasAlcance es null sin aves activas",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "diasAlcance es 0 con inventario vacío",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proyeccion calcula libras con margen y costo con el precio de la última compra",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "proyeccion aplica el margen sobre 15 días de consumo",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proyeccion es 0 cuando el inventario cubre los 15 días con margen",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proyeccion no devuelve costo si todavía no hay compras",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "proyeccion es 0 sin aves activas",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "proyeccion respeta un margen distinto",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "precioPorLibra divide el total entre las libras con 4 decimales",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        }
+      ]
+    },
+    {
+      "archivo": "tests/log.test.ts",
+      "aprobadas": 6,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "redactar oculta valores de claves sensibles, también anidadas",
+          "estado": "aprobada",
+          "duracion_ms": 6
+        },
+        {
+          "nombre": "redactar oculta secretos que aparecen dentro de texto libre",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "redactar no pierde datos no sensibles ni se cae con fechas y bigint",
+          "estado": "aprobada",
+          "duracion_ms": 2
+        },
+        {
+          "nombre": "redactar corta estructuras demasiado profundas",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "registrarLog escribe una línea JSON sin datos sensibles",
+          "estado": "aprobada",
+          "duracion_ms": 3
+        },
+        {
+          "nombre": "registrarLog los errores van a stderr",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        }
+      ]
+    },
+    {
+      "archivo": "tests/tiempo.test.ts",
+      "aprobadas": 7,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "zona horaria de Guatemala convierte UTC a UTC-6 y mantiene el día anterior en la noche",
+          "estado": "aprobada",
+          "duracion_ms": 7
+        },
+        {
+          "nombre": "zona horaria de Guatemala cambia de día a medianoche local",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "zona horaria de Guatemala calcula los minutos del día locales",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "fechas calendario calcula diferencias y sumas de días",
+          "estado": "aprobada",
+          "duracion_ms": 1
+        },
+        {
+          "nombre": "formato muestra horas en 12 horas con a. m. y p. m.",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "formato muestra fechas cortas",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        },
+        {
+          "nombre": "formato etiqueta el día respecto a hoy",
+          "estado": "aprobada",
+          "duracion_ms": 0
+        }
+      ]
+    },
+    {
+      "archivo": "tests/integracion/auditoria.test.ts",
+      "aprobadas": 5,
+      "fallidas": 0,
+      "omitidas": 0,
+      "pruebas": [
+        {
+          "nombre": "auditoria append-only registra un evento con su detalle redactado",
+          "estado": "aprobada",
+          "duracion_ms": 2199
+        },
+        {
+          "nombre": "auditoria append-only rechaza UPDATE",
+          "estado": "aprobada",
+          "duracion_ms": 47
+        },
+        {
+          "nombre": "auditoria append-only rechaza DELETE",
+          "estado": "aprobada",
+          "duracion_ms": 8
+        },
+        {
+          "nombre": "auditoria append-only rechaza TRUNCATE",
+          "estado": "aprobada",
+          "duracion_ms": 7
+        },
+        {
+          "nombre": "auditoria append-only las filas siguen intactas tras los intentos",
+          "estado": "aprobada",
+          "duracion_ms": 11
+        }
+      ]
+    }
+  ]
+}

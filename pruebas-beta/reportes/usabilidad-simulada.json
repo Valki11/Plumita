@@ -1,0 +1,516 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T06:00:31.677Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "tipo": "simulada",
+  "aviso": "Es una simulación automática con Playwright. Mide que los flujos funcionen y cuántos pasos requieren; los tiempos son de un script, no de una persona. No reemplaza una prueba de usabilidad con la usuaria real.",
+  "navegador": "Chromium de Playwright",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "usuario": "simulacion",
+  "corridas": 5,
+  "nota_de_orden": "T3 (horario) se ejecuta antes de T4 porque Alimentar necesita un horario activo para calcular la toma.",
+  "tareas": [
+    {
+      "id": "T1",
+      "nombre": "Iniciar sesión",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 454,
+      "tiempo_maximo_ms": 507,
+      "clics_promedio": 1,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T1.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 494,
+          "clics": 1,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 497,
+          "clics": 1,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 329,
+          "clics": 1,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 445,
+          "clics": 1,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 507,
+          "clics": 1,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "nombre": "Registrar un ave",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 488,
+      "tiempo_maximo_ms": 581,
+      "clics_promedio": 3,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T2.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 485,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 581,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 374,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 493,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 506,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "nombre": "Configurar un horario",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 344,
+      "tiempo_maximo_ms": 407,
+      "clics_promedio": 3,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T3.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 374,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 344,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 278,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 407,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 317,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "nombre": "Ver la cantidad por toma y registrar una alimentación",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 373,
+      "tiempo_maximo_ms": 517,
+      "clics_promedio": 2,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T4.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 517,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 390,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 284,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 358,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 316,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "nombre": "Registrar una compra",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 399,
+      "tiempo_maximo_ms": 483,
+      "clics_promedio": 3,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T5.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 353,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 394,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 428,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 335,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 483,
+          "clics": 3,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "nombre": "Consultar la proyección de 15 días",
+      "tipo_de_tarea": "tarea",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 178,
+      "tiempo_maximo_ms": 216,
+      "clics_promedio": 2,
+      "mensaje_de_error_aparecio": null,
+      "captura": "capturas/T6.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 196,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 105,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 166,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 216,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 207,
+          "clics": 2,
+          "mensaje_error_aparecio": null,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "nombre": "Error a propósito: contraseña incorrecta",
+      "tipo_de_tarea": "error a propósito",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 509,
+      "tiempo_maximo_ms": 602,
+      "clics_promedio": 1,
+      "mensaje_de_error_aparecio": "5 de 5",
+      "captura": "capturas/E1.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 514,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 403,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 602,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 461,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 567,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "nombre": "Error a propósito: compra con cantidad 0",
+      "tipo_de_tarea": "error a propósito",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 306,
+      "tiempo_maximo_ms": 366,
+      "clics_promedio": 3,
+      "mensaje_de_error_aparecio": "5 de 5",
+      "captura": "capturas/E2.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 366,
+          "clics": 3,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 232,
+          "clics": 3,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 292,
+          "clics": 3,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 317,
+          "clics": 3,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 321,
+          "clics": 3,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "nombre": "Error a propósito: cuarto horario",
+      "tipo_de_tarea": "error a propósito",
+      "corridas": 5,
+      "exitos": 5,
+      "tasa_de_exito_pct": 100,
+      "tiempo_promedio_ms": 453,
+      "tiempo_maximo_ms": 545,
+      "clics_promedio": 1,
+      "mensaje_de_error_aparecio": "5 de 5",
+      "captura": "capturas/E3.png",
+      "detalle_por_corrida": [
+        {
+          "corrida": 1,
+          "exito": true,
+          "tiempo_ms": 545,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 2,
+          "exito": true,
+          "tiempo_ms": 285,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 3,
+          "exito": true,
+          "tiempo_ms": 485,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 4,
+          "exito": true,
+          "tiempo_ms": 434,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        },
+        {
+          "corrida": 5,
+          "exito": true,
+          "tiempo_ms": 515,
+          "clics": 1,
+          "mensaje_error_aparecio": true,
+          "detalle": null
+        }
+      ]
+    }
+  ]
+}

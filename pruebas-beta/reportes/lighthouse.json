@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T06:01:56.171Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "herramienta": "lighthouse (npm)",
+  "modo": "móvil (emulación y limitación de red por defecto de Lighthouse)",
+  "sesion": "iniciada con la cuenta demo, solo lectura",
+  "corridas_por_pagina": 3,
+  "nota": "Se reporta la mediana de las corridas. Mide la imagen de producción en esta laptop, por localhost.",
+  "paginas": [
+    {
+      "ruta": "/inicio",
+      "mediana": {
+        "rendimiento": 99,
+        "accesibilidad": 95,
+        "buenas_practicas": 100,
+        "lcp_ms": 2180,
+        "cls": 0,
+        "tbt_ms": 58
+      },
+      "corridas": [
+        {
+          "rendimiento": 91,
+          "accesibilidad": 95,
+          "buenas_practicas": 96,
+          "lcp_ms": 2606,
+          "cls": 0,
+          "tbt_ms": 280
+        },
+        {
+          "rendimiento": 100,
+          "accesibilidad": 95,
+          "buenas_practicas": 100,
+          "lcp_ms": 1741,
+          "cls": 0,
+          "tbt_ms": 58
+        },
+        {
+          "rendimiento": 99,
+          "accesibilidad": 95,
+          "buenas_practicas": 100,
+          "lcp_ms": 2180,
+          "cls": 0,
+          "tbt_ms": 49
+        }
+      ]
+    },
+    {
+      "ruta": "/alimentar",
+      "mediana": {
+        "rendimiento": 98,
+        "accesibilidad": 96,
+        "buenas_practicas": 100,
+        "lcp_ms": 2327,
+        "cls": 0,
+        "tbt_ms": 55
+      },
+      "corridas": [
+        {
+          "rendimiento": 98,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2312,
+          "cls": 0,
+          "tbt_ms": 88
+        },
+        {
+          "rendimiento": 98,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2327,
+          "cls": 0,
+          "tbt_ms": 52
+        },
+        {
+          "rendimiento": 98,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2403,
+          "cls": 0,
+          "tbt_ms": 55
+        }
+      ]
+    },
+    {
+      "ruta": "/inventario",
+      "mediana": {
+        "rendimiento": 99,
+        "accesibilidad": 96,
+        "buenas_practicas": 100,
+        "lcp_ms": 2075,
+        "cls": 0,
+        "tbt_ms": 50
+      },
+      "corridas": [
+        {
+          "rendimiento": 99,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2084,
+          "cls": 0,
+          "tbt_ms": 50
+        },
+        {
+          "rendimiento": 99,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2075,
+          "cls": 0,
+          "tbt_ms": 44
+        },
+        {
+          "rendimiento": 99,
+          "accesibilidad": 96,
+          "buenas_practicas": 100,
+          "lcp_ms": 2037,
+          "cls": 0,
+          "tbt_ms": 75
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T05:59:58.292Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "tipo": "simulada",
+  "navegador": "Chromium de Playwright",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "usuario": "simulacion",
+  "total": 10,
+  "aprobados": 10,
+  "fallidos": 0,
+  "casos": [
+    {
+      "id": "CP-01",
+      "nombre": "Registro de usuario",
+      "estado": "aprobado",
+      "evidencia": "Se crea la cuenta desde /registro y queda con sesión abierta en /inicio",
+      "duracion_ms": 587
+    },
+    {
+      "id": "CP-02",
+      "nombre": "Inicio de sesión correcto",
+      "estado": "aprobado",
+      "evidencia": "Usuario y contraseña correctos llevan a /inicio",
+      "duracion_ms": 505
+    },
+    {
+      "id": "CP-03",
+      "nombre": "Inicio de sesión incorrecto",
+      "estado": "aprobado",
+      "evidencia": "Contraseña errónea muestra el mensaje y no deja entrar",
+      "duracion_ms": 773
+    },
+    {
+      "id": "CP-04",
+      "nombre": "Ingresar ave",
+      "estado": "aprobado",
+      "evidencia": "El ave aparece en Mis aves, en Gallinas adultas",
+      "duracion_ms": 385
+    },
+    {
+      "id": "CP-07",
+      "nombre": "Inactivar ave",
+      "estado": "aprobado",
+      "evidencia": "El ave deja de contar como activa y conserva su fila como Inactiva, con Reactivar",
+      "duracion_ms": 376
+    },
+    {
+      "id": "CP-16",
+      "nombre": "Configurar horarios",
+      "estado": "aprobado",
+      "evidencia": "Agregar, editar y desactivar un horario; la lista y el interruptor responden",
+      "duracion_ms": 632
+    },
+    {
+      "id": "CP-17",
+      "nombre": "Sin horarios activos",
+      "estado": "aprobado",
+      "evidencia": "Con el único horario desactivado, Alimentar pide configurar uno antes de calcular la toma",
+      "duracion_ms": 337
+    },
+    {
+      "id": "CP-09",
+      "nombre": "Registrar alimentación",
+      "estado": "aprobado",
+      "evidencia": "La cantidad sale prellenada, se registra y aparece en el historial con su hora",
+      "duracion_ms": 376
+    },
+    {
+      "id": "CP-10",
+      "nombre": "Registrar compra de alimento",
+      "estado": "aprobado",
+      "evidencia": "La compra aparece en el historial y el inventario sube",
+      "duracion_ms": 596
+    },
+    {
+      "id": "CP-13",
+      "nombre": "Edición de configuración",
+      "estado": "aprobado",
+      "evidencia": "Cambia celular y contraseña; el celular queda guardado y el login funciona con la contraseña nueva",
+      "duracion_ms": 1233
+    }
+  ]
+}

@@ -1,0 +1,568 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T06:00:32.792Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "tipo": "simulada",
+  "semilla": 20261030,
+  "inicio": "2026-10-20",
+  "dias": 30,
+  "supuestos": [
+    "Mismas aves que seed:caso: 4 gallinas adultas, 2 gallos adultos, 3 gallinas en etapa pollito (con 2, 4 y 8 semanas al ingresar) y 1 pato adulto. Las pollitas maduran durante los 30 días y el consumo recomendado sube con ellas.",
+    "3 tomas al día. El consumo recomendado sale de consumoDiarioLb (dominio real) con la tabla alimenticia del DAD.",
+    "A ojo: cada toma varía al azar de forma uniforme entre -30 % y +30 % de lo recomendado. Compra una bolsa solo cuando el inventario llega a cero.",
+    "Plumita: cada toma varía entre -5 % y +5 % de lo recomendado. Compra cuando diasAlcance es 3 o menos, la cantidad que da proyeccion (15 días, margen 10 %) redondeada hacia arriba a bolsas de 25 lb.",
+    "Ambos inician con 20 lb, compran bolsas de 25 lb a Q3.00 la libra y la compra llega 1 día después de pedirla. El gasto se cuenta al pedir.",
+    "Sin pedido pendiente no se vuelve a pedir. Si el inventario no alcanza para una toma, se da lo que quede.",
+    "Día sin alimento: no se pudo dar nada en todo el día. Ración incompleta: se dio menos del 70 % de lo recomendado.",
+    "Libras de más y de menos se suman día por día frente a lo recomendado; la diferencia neta es dado menos recomendado.",
+    "Las dos corridas usan semillas fijas derivadas de la semilla principal: el resultado es reproducible."
+  ],
+  "escenarios": {
+    "a_ojo": {
+      "resumen": {
+        "dias_sin_alimento": 2,
+        "dias_con_racion_incompleta": 4,
+        "libras_de_mas_vs_recomendado": 1.29,
+        "libras_de_menos_vs_recomendado": 9.73,
+        "diferencia_neta_lb": -8.44,
+        "libras_dadas": 58.8,
+        "libras_recomendadas": 67.24,
+        "libras_compradas": 50,
+        "gasto_total_qtz": 150,
+        "numero_de_compras": 2,
+        "inventario_final_lb": 11.2
+      },
+      "compras": [
+        {
+          "dia": 11,
+          "fecha": "2026-10-30",
+          "libras": 25,
+          "gasto": 75
+        },
+        {
+          "dia": 24,
+          "fecha": "2026-11-12",
+          "libras": 25,
+          "gasto": 75
+        }
+      ],
+      "serie_diaria": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-20",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.25,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 17.75
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-10-21",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.04,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 15.7
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-10-22",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.07,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 13.63
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-10-23",
+          "recomendado_lb": 2.06,
+          "dado_lb": 1.81,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 11.83
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-10-24",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.26,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 9.56
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-10-25",
+          "recomendado_lb": 2.06,
+          "dado_lb": 1.93,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 7.64
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-10-26",
+          "recomendado_lb": 2.06,
+          "dado_lb": 1.97,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 5.66
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-10-27",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.41,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 3.25
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-10-28",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.37,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 0.88
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-10-29",
+          "recomendado_lb": 2.23,
+          "dado_lb": 0.88,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 0
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-10-30",
+          "recomendado_lb": 2.23,
+          "dado_lb": 0,
+          "comprado_lb": 25,
+          "inventario_fin_lb": 0
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-10-31",
+          "recomendado_lb": 2.23,
+          "dado_lb": 1.97,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 23.03
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-11-01",
+          "recomendado_lb": 2.23,
+          "dado_lb": 1.7,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 21.33
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-11-02",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.21,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 19.12
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-11-03",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.27,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 16.85
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-11-04",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.48,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 14.36
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-11-05",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.02,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 12.35
+        },
+        {
+          "dia": 18,
+          "fecha": "2026-11-06",
+          "recomendado_lb": 2.23,
+          "dado_lb": 1.92,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 10.43
+        },
+        {
+          "dia": 19,
+          "fecha": "2026-11-07",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.42,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 8
+        },
+        {
+          "dia": 20,
+          "fecha": "2026-11-08",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.08,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 5.92
+        },
+        {
+          "dia": 21,
+          "fecha": "2026-11-09",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.13,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 3.79
+        },
+        {
+          "dia": 22,
+          "fecha": "2026-11-10",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.34,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 1.45
+        },
+        {
+          "dia": 23,
+          "fecha": "2026-11-11",
+          "recomendado_lb": 2.4,
+          "dado_lb": 1.45,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 0
+        },
+        {
+          "dia": 24,
+          "fecha": "2026-11-12",
+          "recomendado_lb": 2.4,
+          "dado_lb": 0,
+          "comprado_lb": 25,
+          "inventario_fin_lb": 0
+        },
+        {
+          "dia": 25,
+          "fecha": "2026-11-13",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.38,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 22.62
+        },
+        {
+          "dia": 26,
+          "fecha": "2026-11-14",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.05,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 20.58
+        },
+        {
+          "dia": 27,
+          "fecha": "2026-11-15",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.41,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 18.17
+        },
+        {
+          "dia": 28,
+          "fecha": "2026-11-16",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.32,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 15.85
+        },
+        {
+          "dia": 29,
+          "fecha": "2026-11-17",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.19,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 13.66
+        },
+        {
+          "dia": 30,
+          "fecha": "2026-11-18",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.47,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 11.2
+        }
+      ]
+    },
+    "plumita": {
+      "resumen": {
+        "dias_sin_alimento": 0,
+        "dias_con_racion_incompleta": 0,
+        "libras_de_mas_vs_recomendado": 0.41,
+        "libras_de_menos_vs_recomendado": 0.58,
+        "diferencia_neta_lb": -0.17,
+        "libras_dadas": 67.07,
+        "libras_recomendadas": 67.24,
+        "libras_compradas": 100,
+        "gasto_total_qtz": 300,
+        "numero_de_compras": 2,
+        "inventario_final_lb": 52.93
+      },
+      "compras": [
+        {
+          "dia": 7,
+          "fecha": "2026-10-26",
+          "libras": 50,
+          "gasto": 150
+        },
+        {
+          "dia": 29,
+          "fecha": "2026-11-17",
+          "libras": 50,
+          "gasto": 150
+        }
+      ],
+      "serie_diaria": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-20",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.03,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 17.97
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-10-21",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.1,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 15.87
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-10-22",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.05,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 13.82
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-10-23",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.01,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 11.81
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-10-24",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.02,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 9.78
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-10-25",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.1,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 7.69
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-10-26",
+          "recomendado_lb": 2.06,
+          "dado_lb": 2.02,
+          "comprado_lb": 50,
+          "inventario_fin_lb": 5.67
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-10-27",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.27,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 53.4
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-10-28",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.19,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 51.21
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-10-29",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.24,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 48.98
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-10-30",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.22,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 46.76
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-10-31",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.22,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 44.54
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-11-01",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.26,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 42.28
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-11-02",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.17,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 40.11
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-11-03",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.2,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 37.91
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-11-04",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.25,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 35.66
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-11-05",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.29,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 33.38
+        },
+        {
+          "dia": 18,
+          "fecha": "2026-11-06",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.27,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 31.11
+        },
+        {
+          "dia": 19,
+          "fecha": "2026-11-07",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.25,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 28.87
+        },
+        {
+          "dia": 20,
+          "fecha": "2026-11-08",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.19,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 26.67
+        },
+        {
+          "dia": 21,
+          "fecha": "2026-11-09",
+          "recomendado_lb": 2.23,
+          "dado_lb": 2.29,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 24.39
+        },
+        {
+          "dia": 22,
+          "fecha": "2026-11-10",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.36,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 22.03
+        },
+        {
+          "dia": 23,
+          "fecha": "2026-11-11",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.31,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 19.72
+        },
+        {
+          "dia": 24,
+          "fecha": "2026-11-12",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.37,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 17.34
+        },
+        {
+          "dia": 25,
+          "fecha": "2026-11-13",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.43,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 14.91
+        },
+        {
+          "dia": 26,
+          "fecha": "2026-11-14",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.41,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 12.5
+        },
+        {
+          "dia": 27,
+          "fecha": "2026-11-15",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.39,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 10.11
+        },
+        {
+          "dia": 28,
+          "fecha": "2026-11-16",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.42,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 7.7
+        },
+        {
+          "dia": 29,
+          "fecha": "2026-11-17",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.35,
+          "comprado_lb": 50,
+          "inventario_fin_lb": 5.35
+        },
+        {
+          "dia": 30,
+          "fecha": "2026-11-18",
+          "recomendado_lb": 2.4,
+          "dado_lb": 2.42,
+          "comprado_lb": 0,
+          "inventario_fin_lb": 52.93
+        }
+      ]
+    }
+  }
+}

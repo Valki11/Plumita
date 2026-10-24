@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "fecha": "2026-10-24T06:03:09.704Z",
+    "version": "0.9.0-beta",
+    "commit": "bec56d8",
+    "cambios_sin_commit_en_la_app": 0,
+    "base_url": "http://localhost:3000"
+  },
+  "herramienta": "k6 (imagen grafana/k6)",
+  "escenario": "Sesión iniciada una vez; 10 usuarios virtuales navegan inicio, alimentar e inventario durante 1 minuto, con 1 a 3 s entre pantallas. Solo lecturas.",
+  "sesion": "cookie obtenida con un solo inicio de sesión de la cuenta demo",
+  "advertencia": "Mide esta laptop (CPU, memoria, Docker Desktop y lo demás que esté abierto). Sirve como línea base, no como garantía de un servidor.",
+  "solicitudes_totales": 318,
+  "solicitudes_por_segundo": 4.73,
+  "duracion_ms": {
+    "promedio": -10.86,
+    "p50": 29.78,
+    "p90": 54.18,
+    "p95": 67.09,
+    "p99": 156.54,
+    "maximo": 14710.54
+  },
+  "errores_pct": 0,
+  "comprobaciones_pct": 100,
+  "contra_rnf_02": {
+    "umbral_p95_ms": 2000,
+    "umbral_errores_pct": 1,
+    "cumple_p95": true,
+    "cumple_errores": true,
+    "cumple": true
+  }
+}
